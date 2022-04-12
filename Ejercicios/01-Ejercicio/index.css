@@ -1,0 +1,18 @@
+/*
+Ejercicio con html y css
+1.Crear un documento HTML y vincularlo con css
+2.Crear una estructura HTML que cuante con un CONTENEDOR GENERAL, CABEZERA
+    MENU, BARRA LATERAL, SECCION DE UN CONTENIDO PRINCIPAl, 
+    ELEMENTOS DENTRO DEL CONTENEDOR PRINCIPAL, FOOTER
+3.Todo el contenido debe estar dentro de el contenedor 
+    principal su ancho sera 1200px
+4.Header debe ocupar el 100% del ancho y tener un texto grande 
+    centrado.
+5.Menu debe tener los elementos uno al lado de otro.
+6.El contenido principal debe tener un ancho del 70%
+7.El contenido dentro del contenedor principal debe de ser una 
+    cuandricula con 4 lineas de 2 cajas
+8.La barra lateral debe tener un ancho de 30%,
+9.El footer debe tener un ancho del 100% del div que lo contiene 
+    y estar abajo de todo.
+*/
