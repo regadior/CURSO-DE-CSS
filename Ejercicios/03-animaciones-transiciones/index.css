@@ -1,0 +1,52 @@
+#boton{
+    display: block;
+    padding: 20px;
+    width: 150px;
+    background-color: aqua;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid black;
+    transition: all 3s; /*transicion que lleve todas las propiedades css y tarde 3s*/
+    transition: border 3s; /*transicion que lleve las propiedades css del borde  y tarde 3s*/
+
+}
+/*Cuando pase por encima se le van a cambiar los estilos*/
+#boton:hover{
+    border-radius: 15px;
+    background-color: rebeccapurple;
+}
+#caja{
+    width: 250px;
+    height: 250px;
+    background-color: aquamarine;
+    color: aliceblue;
+    border: 5px solid black;
+    animation-name: desplazamiento;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+/*definir los keyframes de la animacion*/
+
+/*@keyframes desplazamiento{ se usan 2 kay frames por lo que da un salto al volver al inicio
+    from{
+        margin-left: 0px;
+    }
+    to{
+        margin-left: 1200px;
+
+    }
+}*/
+
+@keyframes desplazamiento{ 
+    0%{
+        margin-left: 0px;
+    }
+    50%{
+        margin-left: 1200px;
+    }
+    100%{
+        margin-left: 0px;
+    }
+}
