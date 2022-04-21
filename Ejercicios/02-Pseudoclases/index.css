@@ -1,0 +1,35 @@
+
+/*Solo se aplica a el primer elemento de la lista*/
+ul li:first-child{
+
+}
+/*Permite elegir el elemento de la lista al que referirse*/
+ul li:nth-child(2){
+
+}
+/*Solo se aplica al ultim oelemento*/
+ul li:last-child{
+
+}
+/*Cuando no se ha visitado ese enlace se le aplica el estilo*/
+#enlace:link{
+
+}
+/*Cuando si se ha visitado ese enlace se le aplica el estilo*/
+#enlace:visited{
+
+}
+/*Cuando pasa por encima el raton se aplican los estilos*/
+#enlace:hover{
+
+}
+/*Cuando se pulsa se aplican los estilos*/
+#enlace:active{
+
+}
+/*Cuando se esta haciendo foco en ese campo se aplican los estilos*/
+
+input[type="text"]:focus{
+
+}
+
