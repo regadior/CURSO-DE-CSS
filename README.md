@@ -1,5 +1,5 @@
 # Curso de Mastere en CSS
-Contenido de el cuerso, se aprendera Css, Responsive Web Design, SASS, Flexbox, Grid y Bootstrap 4y5.
+Los contenidos que se realizaran en el curso son Css, Responsive Web Design, SASS, Flexbox, Grid y Bootstrap 4y5.
 <br/>
 Este curso esta impartido por [Víctor Robleis](https://www.udemy.com/user/victor-robles-2/).
 # Enlace al curso
