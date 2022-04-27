@@ -1,0 +1,931 @@
+/* FUENTES */
+@font-face {
+    font-family: "TrebuchetMS";
+    src: url("./fonts/TrebuchetMS.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "BebasNeue";
+    src: url("./fonts/BebasNeue.otf") format("OpenType");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: WebSymbolsRegular;
+    src: url("./fonts/websymbols-regular-webfont.eot");
+    src: url("./fonts/websymbols-regular-webfont.eot?#iefix") format("embedded-opentype"),
+        url("./fonts/websymbols-regular-webfont.woff") format("woff"),
+        url("./fonts/websymbols-regular-webfont.ttf") format("truetype"),
+        url("./fonts/websymbols-regular-webfont.svg#WebSymbolsRegular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* GENERALES */
+
+* {
+    margin: 0;
+    padding: 0px;
+}
+
+body {
+    background-image: url("../img/pattern.png");
+}
+
+.wrap {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.gear,
+.icon {
+    font-family: WebSymbolsRegular;
+}
+
+/* Esta propiedad se agregó para arreglar un problema con los flotados cuando se maquetaban los artículos y el título, sin embargo había otra forma más sencilla de resolverlo (se explica en esa sección del código) */
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+/* CABECERA */
+
+#header {
+    width: 100%;
+    height: 70px;
+    background: black;
+    font-family: "BebasNeue";
+    color: white;
+}
+
+#logo {
+    float: left;
+    width: 200px;
+    background-color: #37bcf9;
+    text-align: center;
+    margin-top: 8px;
+    margin-left: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    /* Esta propiedad es muy importante para las animaciones que hacen que las cosas aparezcan desde algún lado de la caja*/
+    overflow: hidden;
+    transition: all 300ms;
+}
+
+#logo .gear {
+    display: block;
+    float: left;
+    font-size: 30px;
+    margin-top: 8px;
+    margin-left: 26px;
+    /* Esta propiedad da animación al engranaje, este es el nombre que tendrá la animación o los keyframes mejor dicho, sin esto el elemento no recibe la animación */
+    animation-name: rotate-gear;
+    /* Esta propiedad asigna la duración de la animación */
+    animation-duration: 2s;
+    /* Esta propiedad establece que la animación será infinita */
+    animation-iteration-count: infinite;
+    /* Esta propiedad establece que la animación tendrá una velocidad de movimiento uniforme, no rápido al comienzo y terminando lento al final como pasa por defecto */
+    animation-timing-function: linear;
+}
+
+#logo:hover {
+    border-radius: 2px;
+    color: black;
+    background-color: #ccc;
+}
+
+/* Estos son los keyframes que se aplicar al engranaje para que haga la animación de girar */
+@keyframes rotate-gear {
+
+    /* Se utilizan las propiedades from y to porque es una animación muy sencilla */
+    from {
+        /* La propiedad rotateZ hace que el elemento gire hacia la derecha si se colocan grados positivos, y hacia la izquierda si se ponen grados negativos. Hace que el elemento gire como una imagen, si se coloca
+        rotateX o Y el elemento girará como una animación 3D */
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+/* Con esta regla CSS se establece la animación para la el engranaje del logo al pasar el mouse sobre él */
+#logo:hover .gear {
+    animation-name: fromBellow;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: initial;
+}
+
+/* Estos son los keyframes para la animación del engranaje al hacer hover */
+@keyframes fromBellow {
+    0% {
+        /* Esta propiedad con el valor translateY hace que los elementos se muevan, siendo 0% el lugar original, si se coloca un valor positivo los elementos se mueven hacia abajo y si se coloca un valor negativo se
+        se mueven hacia arriba , translateY se refiere al eje Y (eje vertical)*/
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(200%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
+#logo h3 {
+    display: block;
+    float: right;
+    font-size: 40px;
+    margin-top: 5px;
+    margin-right: 65px;
+    transition: all 300ms;
+}
+
+/* Con esta reglas CSS se establecen las propiedades de la animación del logo al hacer hover */
+#logo:hover h3 {
+    animation-name: fromRight;
+    animation-duration: 400ms;
+    animation-iteration-count: initial;
+    animation-timing-function: linear;
+}
+
+/* Estos son los keyframes para la animación del h3 del logo al hacer hover */
+@keyframes fromRight {
+    from {
+        /* En este caso se usó el valor translateX que hace referencia al eje X (eje horizontal), si segit add coloca un valor positivo el elemento se mueve hacia la derecha, y si se coloca un valor negativo el elemento se 
+        mueve hacia la izquierda (0% es la posición original) */
+        transform: translateX(200%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+#menu {
+    float: right;
+    height: 70px;
+    background-color: transparent;
+}
+
+#menu ul li {
+    font-size: 24px;
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+    letter-spacing: 1px;
+    line-height: 70px;
+}
+
+#menu ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: all 200ms;
+}
+
+#menu ul li a:hover {
+    color: #37bcf9;
+    /* Esta propiedad con este valor es lo único nuevo que se ha escrito en el código hasta ahora, la propiedad transform nos permite modificar la escalas (tamaño), rotaciones, entre otras cosas. Se debe resaltar que
+    con la propiedad transform se pueden modificar textos o elementos del CSS sin que dichas modificaciones afecten la maquetación en general, es decir, sin hacer que otras cosas se muevan. */
+    transform: scale(1.2);
+}
+
+#menu ul li a {
+    color: white;
+}
+
+/* BANNER */
+#banner {
+    width: 95.5%;
+    height: 100px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 2px gray;
+    background-image: url(../img/bakbaner.png);
+    /* Con esta propiedad se movió la imagen que se estableció de fondo -200px en el eje X (hacia la izquierda) y -200px en el eje Y (hacia arriba) */
+    background-position: -200px -200px;
+    margin: 20px auto;
+    /* Esta propiedad hace que todo lo que sobresalga de la caja se oculte, de esa forma la animación hace que el letrero salga y entre de la caja */
+    overflow: hidden;
+    /* Las siguientes tres propiedades son para animar el fondo del banner */
+    animation-name: backBanner;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+}
+
+@keyframes backBanner {
+    0% {
+        /* Se usa esta propiedad porque es la que determina la posición del fondo, anteriormente se había establecido el valor de -200px en el eje X y 
+        el eje Y, así que aquí se restablece a 0px cada eje para cambiar la posición inicial del fondo (la posición inicial es el 0% de la animación)*/
+        background-position: 0px 0px;
+    }
+
+    100% {
+        /* Con esta propiedad se establece que la animación será hasta que el fondo llegue a los valores -200px, tanto en el eje X como en el Y */
+        background-position: -200px -200px;
+    }
+}
+
+#banner h1 {
+    display: block;
+    width: 850px;
+    font-family: "Bebasneue";
+    color: white;
+    font-size: 45px;
+    letter-spacing: 2px;
+    margin: 27px auto;
+    text-shadow: 2px 2px 1px black;
+    font-weight: notmal;
+    /* Las siguientes propiedades son para animar el texto del banner */
+    animation-name: showText;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+}
+
+/* Estos son los keyframes para la animación del texto del banner */
+@keyframes showText {
+    0% {
+        /* Con esta propiedad se desplazó el letrero al comienzo de la animación un 600% a la izquierda (fuera de la caja) y se agrandó con el valor scale para que sea más grande */
+        transform: translateX(-600%) scale(5, 5);
+        /* Con esta propiedad se estableció una opacidad normal */
+        opacity: 1;
+    }
+
+    50% {
+        /* Con esta propiedad se esableció hasta donde se moverá el letrero desde el 0% de la animación, se moverá a la derecha un 600%, llegando a salir de la caja de nuevo, manteniendo su tamaño */
+        transform: translateX(600%) scale(5, 5);
+        /* Con esta propiedad se mantiene la misma opacidad */
+        opacity: 1;
+    }
+
+    75% {
+        /* Con esta propiedad se mantiene el mismo tamaño, solo que se mueve a la izquierda un 600% hasta salir de la caja de nuevo */
+        transform: translateX(-600%) scale(5, 5);
+        /* Se elimino la sombra del texto porque aquí se hace el efecto de que va desvaneciendose */
+        text-shadow: none;
+        /* Esto hace que el texto se vaya haciendo transparente a medida que pasa */
+        color: transparent;
+        /* Esto hace que la opacidad del texto sea 0  poco a poco, haciendo que desaparezca por completo a medida que pasa por el banner*/
+        opacity: 0;
+    }
+
+    100% {
+        /* Aquí se restablecen los estilos originales del texto */
+        transform: translateX(0%) scale(1, 1);
+        /* Se resstableció la sombra original que tenía el texto ya que así es como es la sombra del texto al detenerse */
+        text-shadow: 2px 2px 1px black;
+        /* Se restableció el color de la letra porque si no queda transparente, mostrándose la sombra que hay detrás, haciendo ver el texto de banner ocmo si fuera de color negro */
+        color: white;
+        /* Se reestableció la opacidad normal para que el texto se haga visivle a medida que aparece en el banner */
+        opacity: 1;
+    }
+}
+
+/* TARJETAS */
+
+.card {
+    float: left;
+    width: 204px;
+    height: 305px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #ddd;
+    background-color: white;
+    overflow: hidden;
+    margin: 22px;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+/* Con esta regla CSS se estableció el estilo que se aplicará al hacer hover sobre las tarjetas */
+.card:hover {
+    background-color: black;
+}
+
+.card:last-child {
+    margin-right: 0px;
+}
+
+/* Esta regla también se aplica a algunos elementos de la barra lateral */
+.card .icon {
+    display: block;
+    width: 100%;
+    height: 130px;
+    font-size: 50px;
+    line-height: 130px;
+    text-align: center;
+    /* Creo que esto es innecesario, ya se centra el ícono con el text-align:center */
+    margin: 0 auto;
+    transition: all 300ms;
+}
+
+/* Con esta regla CSS se estableció una cambio de tamaño de la letra cuando se hace hover, un cambio de color y las propiedades necesarias para la animación */
+.card:hover .icon {
+    font-size: 70px;
+    color: #37bcf9;
+    animation-name: showIcon;
+    animation-duration: 300ms;
+    animation-timing-function: linear;
+}
+
+/* Estos son los keyframes para la animación del ícono de las tarjetas */
+@keyframes showIcon {
+    from {
+        transform: translateY(-200%)
+    }
+
+    to {
+        transform: translateY(0%)
+    }
+}
+
+.card .category {
+    width: 100%;
+    height: 50px;
+    font-family: TrebuchetMS;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    color: #00538c;
+    transition: all 300ms;
+}
+
+/* En esta regla CSS se establecen los estilos que se aplicarán a las categorías cuando se haga hover en la tarjetas, y se establecieron también las propiedades necesarias para la animación*/
+.card:hover .category {
+    color: white;
+    animation-name: showCategory;
+    animation-duration: 400ms;
+    animation-timing-function: linear;
+}
+
+/* Estos son los keyframes para la animación del texto de categoría */
+@keyframes showCategory {
+    from {
+        transform: translateY(-300%);
+        color: black;
+
+    }
+
+    to {
+        transform: translateY(0%);
+        /* Esta propiedad creo que está de más pues igual se aplica el color blanco porque se estableció en el hover */
+        color: white;
+    }
+}
+
+.card .description {
+    text-align: center;
+    color: #0370b9;
+    font-family: TrebuchetMS;
+    font-size: 15px;
+    transition: all 300ms;
+}
+
+/* Con esta regla se establecieron los estilos que se aplicarán al párrafo de descripción al hacer hover sobre las tarjetas, además de las propiedades necesarias para la animación */
+.card:hover .description {
+    color: white;
+    animation-name: showDescription;
+    animation-duration: 400ms;
+    animation-timing-function: linear;
+}
+
+/* Estos son los keyframes de la animación del párrafo de descripción */
+@keyframes showDescription {
+    from {
+        transform: translateX(-300%);
+        color: black;
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+/* Barra lateral */
+
+#lateral {
+    width: 300px;
+    min-height: 1200px;
+    font-family: TrebuchetMS;
+    /* Con la propiedad float se fotó la barra lateral a la derecha pues esa es su posición, como se puede ver en el dieños .png */
+    float: right;
+    /* Se agregó este margen para alinear el aside con las tarjetas y el resto de elementos */
+    margin: 20px;
+}
+
+#lateral h3 {
+    display: block;
+    width: auto;
+    height: 45px;
+    line-height: 49px;
+    /* Esta propiedad es un shorthand de background-image y background-color, la imagen que se puso de fondo es un cuadro muy pequeño de bordes de color gris y rellenos transparente, por lo que 
+    al aplicar un fondo blanco, se ve el color blanco de fondo con un diseño cuadriculado pues ese pequeño cuador se repite por todo el elemento porque es el comportamiento predeterminado*/
+    background: url("../img/pxgray.png"), white;
+    /* Este box-shadow tiene 4 valores en que se alteran los valores del eje X y el eje Y, los valores van aumentando de px en px y así se crea un efecto 3D de la caja del h3 */
+    box-shadow: 0px 1px 0px #393d3f,
+        1px 2px 0px #393d3f,
+        2px 3px 0px #393d3f,
+        3px 4px 0px #393d3f;
+    font-size: 30px;
+    font-family: "BebasNeue";
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+/* Esta regla CSS hace que el aside se acerque un poco más a las tarjetas (verticalmente), con el selector se escogió el primer h3 de todos los h3 que son hicjos del elemento #lateral */
+#lateral h3:first-child {
+    margin-top: 0px;
+}
+
+/* Con esta regla CSS se establecieron los estilos de lo que se´ria el buscado del sitio web, es muy importante resaltar que Victor coloc+o un botón con el value L porque esa letra corresponde al símbolo de la lupa,
+otra cosa a tener en cuenta es que el botón y el input están dentro de una caja, al input y al botón se le eliminaron los bordes y se adaptó el tamaño y su posición para que integren a la caja que los contiene a 
+ambos, convirtiendose visualmente, la caja #search en el borde del input */
+#search {
+    width: 90%;
+    height: 30px;
+    margin: 10px auto;
+    background-color: white;
+    /* Con las siguientes tres propiedades se estableció el borde de la caja que contiene el input y el botón del buscado, pues esto actuará como el borde del input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #ccc inset;
+}
+
+/* Con esta regla CSS se dieron estilos al input para que se acople perfectamente a la caja #search */
+#lateral input[type="text"] {
+    width: 85%;
+    /* Para adaptar bien el input a la caja que lo contiene se colocó la misma altura */
+    height: 30px;
+    border: none;
+    padding-left: 5px;
+    border-radius: 5px;
+    /* Se colocó esta propiedad pues así se ve el fondo blanco de la caja que contiene al input y al botón */
+    background-color: transparent;
+    color: #ccc;
+    outline: none;
+    transition: all 300ms;
+}
+
+/* Con esta reglas CSS se establece que cuando se esté haciendo focus a los inputs de tipo texto, las letras que se escriban serán de otro color */
+#lateral input[type="text"]:focus {
+    color: #555;
+}
+
+/* Con esta regla CSS se aplican los estilos a los botones de la barra lateral en general */
+#lateral input[type="button"],
+#lateral input[type="submit"] {
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid #ccc;
+    padding-left: 6px;
+    /* Victor no agrega esto, pero es algo que aprendí en una lección anterior, esto elimina un borde negro que aparece como estilo del navegador cuando se hace focus o active a los botones o campos de texto */
+    outline: none;
+}
+
+/* Esta regla CSS se hizo para las cajas laterales, y como hay varias cajas que comparte el mismo estilo, se agregó esta clase para que se aplique a todas las cajas */
+.aside-box {
+    width: 85%;
+    height: 240px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding-top: 2px;
+    background-color: white;
+    /* Se agregaron estos sombreados para crear el efecto 3D de las cajas */
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),
+        0px 3px 7px rgba(0, 0, 0, 0.3),
+        0px 1px white inset,
+        0px -3px 2px rgba(0, 0, 0, 0.3) inset;
+}
+
+/* Con esta regla CSS se aplican estilos a los input del apartado login de la barra lateral (los inputs de usuario y contraseña) */
+#login input[type="email"],
+#login input[type="password"] {
+    /* Se agregó esta propiedad para que que los inputs se comporten como un elemento de bloque, y así poder manipularlos a nuestro antojo */
+    display: block;
+    margin: 0px auto;
+    margin-top: 20px;
+    width: 82%;
+    height: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #ccc inset;
+    border-radius: 5px;
+    /* Con esta propiedad se hace que el texto del inputo no se comience a escribir tan pegado del lado izquierdo, pero al hacer este cambio el input cambia de tamaño, por lo que se reajustó el ancho a 82% 
+    (antes era de 95%) */
+    padding-left: 30px;
+    color: gray;
+    outline: none;
+}
+
+/* Con esta regla CSS se agregaron estilos que se palican cuando se hace focus a los campos de tipo texto, email o password */
+#login input[type="email"]:focus,
+#login input[type="password"]:focus {
+    color: #555;
+    box-shadow: 1px 1px 1px #ccc inset;
+}
+
+
+/* Esta regla CSS selecciona los íconos de contraseña y usuario ya que comparte gran parte de sus estilos */
+#login #user,
+#login #password {
+    /* Esta propiedad en realidad no afecta en nada a los íconos, creo que está de más */
+    text-align: center;
+    display: block;
+    /* Con esta propiedad se saca a los íconos del flujo de la página para posicionarlos como se necesita sin afectar el resto de maquetado*/
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 6px;
+    /* Se establece la misma altura del input a los íconos */
+    height: 30px;
+}
+
+/* Con esta regla CSS se cambia el tamaño del ícono de candado que va en el input de contraseña */
+#login #password {
+    /* Se cambiar los márgenes con las siguientes dos propiedades para poder posicionar correctamente el ícono en forma de candado */
+    margin-left: 18px;
+    margin-top: 25px;
+    /* Se cambió el tamaño del candado para que se integrara de mejor forma */
+    font-size: 20px;
+}
+
+/* Esta regla CSS se usa para aplicar estilos a los botones de la barra lateral en el elemento #login */
+
+#login input[type="submit"],
+/* Victor agrega este selector de atributo button pero no lo hay en el HTML y además este tipo de input con atributo button fue remplazado por la etiqueta button, esto está de más */
+#login input[type="button"],
+#login input[type="reset"],
+/* No hay ninguna etiqueta button, así que esto está de más */
+#login button {
+    /* Se coloca esta propiedad para manipular los botones como queramos, sin embargo se puede eliminar puesto que los estilos igual se aplican, y así los botones si se pondrán uno al lado de otro */
+    /*display: block;*/
+    text-align: center;
+    width: 100px;
+    height: 35px;
+    margin-top: 20px;
+    color: white;
+    background: linear-gradient(to bottom, #3eb8e5 0%, #2ca0ca 100%);
+    outline: none;
+    border: 1px solid #156785;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "TrebuchetMS";
+    font-weight: lighter;
+    /* Sino se elimina la propiedad display:block deberá aplicarse un float: left para que los botones se pongan uno al lado del otro, yo comenté el display:block */
+    /*float: left;*/
+    margin-left: 17px;
+    /* Victor no agrega esto pero yo lo agregué para que los letreros si queden centrados por completo porque anteriormente se aplicaorn estilos al botón submit y había un padding de 6px*/
+    padding-left: 0px;
+    margin-bottom: 20px;
+    transition: all 300ms;
+}
+
+/* Con esta regla CSS se establecen los stilos que se aplicarán cuando se pase el mouse por encima de los botones */
+#login input[type="submit"]:hover,
+#login input[type="button"]:hover,
+#login input[type="reset"]:hover,
+#login button:hover {
+    box-shadow: 0px 0px 3px gray;
+}
+
+
+/* Con esta reglas CSS se aplican estilos a los links del apartado login */
+#login a {
+    /* Sin esta propiedad los estilos no se aplican tan bien porque queda un enlace al lado del otro, con esto se colocan uno arriba del otro porque actúan como bloques*/
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 18px;
+    color: #555;
+}
+
+#login a:hover {
+    text-decoration: underline;
+    color: #2f78bc;
+}
+
+/* Se agregó esta regla CSS para adaptar el alto de la caja a los enlaces */
+#social {
+    height: 190px;
+}
+
+/* Con esta regla CSS se aplicaron los estilos a los enlaces de las redes sociales*/
+#social a {
+    /* Esta propiedad se agregó con el fin de poder manipular los enlaces como se desee, también hace que los enlaces abarquen por completo la caja del párrafo que los contiene (Si quito esta propiedad se eliminan
+    varias de las propiedades que se aplicaron en esta reglas CSS, los márgenes verticales por ejemplo, y esto se debe a que este tipo de márgenes solo puede aplicarse a elementos de bloque) */
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#social .overlay {
+    display: block;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px #ccc;
+    border: 3px solid white;
+    box-shadow: 0px 0px 4px #ccc;
+    background-color: #f4f7fe;
+    position: absolute;
+    padding: 5px;
+    margin-left: 70px;
+    margin-top: -52px;
+    cursor: pointer;
+    /* Se usó el transform acá de una vez para ocultar los íconos hacia la izquierda, luego se hará que se muestre el texto al hacer hover */
+    transform: translateX(-80%);
+    /* Esto hace que los textos sean completamente transparentes */
+    opacity: 0;
+    transition: all 400ms;
+}
+
+/* Con esta regla CSS se estbablecen los estilos de los divs que están dentro de la caja con el id social, para hacer que se muestren los textos de cada red social */
+#social div:hover .overlay {
+    opacity: 1;
+    transform: translateX(0%);
+
+
+}
+
+/* ARTÍCULOS */
+
+#articles {
+    width: 860px;
+    /* Victor decide colocar un clearfix debajo del h2 para que los flotados no lleven el fondo del título hasta arriba de las tarjetas, esa es una opción, sin embargo no funciona del todo, el fondo de la caja 
+    se va por encima de las tarjetas y detrás de ellas después de agregar el clearfix (solo se arregla el posicionamiento del título, que se posicionaba por debajo de los artículos [no comprendo porqué se posicionaba 
+    por debajo de los artículos, es decir, superpuesto]) y los artículos se ponen muy abajo, por lo que toca flotar la caja que contiene al título y los artículos a la izquierda (con flotar la caja a la izquierda todo
+    se arregla, Victor dice que el clearfix es por si acaso, sin embargo no funciona bien, y no comprendo porqué al inspeccionar los elementos que creo afectados por flotados anteriores no muestran que hereden flotado
+    alguno, es un comportamiento extraño de CSS, sin embargo si pude deducir que era un problema con los flotados) */
+    float: left;
+}
+
+#articles h2 {
+    display: block;
+    width: 100%;
+    /* Con esta propiedad ocurre algo extraño y tiene que ver con los flotados, se limpian pero no funciona del todo (como se explica anteriormente), así que lo mejor es flotar la caja que contiene el h2 y los artícu-
+    los a la izquierda que es en donde se quiere ubicar, con eso ya es suficiente y la caja capta el tamaño de todo lo que contiene perfectamente; luego de el float:left, al establecer el alto del h2 el fondo se ubica donde es y los artículos se mantienen a la 
+    distancia deseada (si llegué a pensar que los flotados afectaban al elemento, lo pude deducir, pero no comprendo cómo lo afecta porque al inspeccionar los elementos que parecen afectados por flotados anteriores 
+    no se ve que hereden algún flotado, y eso es lo que me confunde, tampoco comprendo porque el fondo se va hasta arriba de las tarjetas y se coloca debajo de los artículos y por qué el texto del h2 se va detrás de 
+    los artículos, es un comportamiento extraño de CSS, pero si se debe a los flotados) ESTO SE ARREGLA CON EL FLOAT-LEFT EN LA CAJA DE LOS ARTÍCULOS Y YA!!! ese es el resumen*/
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    font-family: "BebasNeue";
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    background: url("../img/pxgray.png"), white;
+    box-shadow: 0px 1px 0px #393d3f,
+        1px 2px 0px #393d3f,
+        2px 3px 0px #393d3f,
+        3px 4px 0px #393d3f;
+    /* Esta propiedad no cambia nada, Victor lo coloca por si acaso */
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Con esta regla CSS se aplican los estilos a los artículos como tal */
+#articles article {
+    width: 98%;
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 40px auto;
+    padding: 10px;
+    font-family: "TrebuchetMS";
+    background-color: white;
+    color: black;
+    box-shadow: 1 px 1px 2px #ddd;
+}
+
+/* Con esta regla CSS se dan estilos al título de cada artículo */
+#articles article h4 {
+    display: block;
+    font-size: 23px;
+    margin: 3px;
+}
+
+/* Con esta regla CSS se dan estilos a los enlaces que son los títulos de cada artículo */
+#articles article h4 a {
+    text-decoration: none;
+    color: #00538c;
+}
+
+/* Con esta regla CSS se establecen los estilos que se aplicarán a los títulos de los artículos cuando se pase el mouse por encima */
+#articles article h4 a:hover {
+    text-decoration: underline;
+}
+
+/* Con esta regla css se dan estilos a la fecha de cada artículo */
+#articles .data {
+    float: right;
+    background-color: #393d3f;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    margin: -10px;
+    padding: 4px;
+    font-size: 13px;
+    border-radius: 0px 0px 0px 5px;
+}
+
+
+/* Con esta regla CSS se aplicó un margen a los span dentro del div con clase data, separando así a la fecha de la categoría */
+#articles .data span {
+    margin: 6px;
+}
+
+/* Con esta regla CSS se aplicaron estilos a los párrafos de cada artículo*/
+#articles article p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    /* Esta propiedad la agregué yo para que el texto de los artículos esté justificado */
+    text-align: justify;
+}
+
+/* Con esta regla CSS se dan estilos al botón debajo de los artículos */
+#blog {
+    height: 100px;
+    margin-top: 60px;
+    line-height: 60px;
+    text-align: center;
+    transition: all 1s;
+}
+
+
+
+/* Con esta regla CSS se dan estilos al enlace que está dentro de la caja del botón "ir al blog */
+#blog a {
+    display: block;
+    font-family: "BebasNeue";
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: #00538c;
+    text-decoration: none;
+    /* Aquí agregué transición solo a la sombra y color, porque si ponía all, también se haría una transición lenta de la posición del letrero (tuve que reposicionarlo porque con el
+    margen de 10px se movía, entonces para evitar cambios en su posición, usé transform sin trasición alguna) */
+    transition: text-shadow 1s, color 1s;
+}
+
+#blog:hover {
+    background-color: #333;
+    border: 10px solid #37bcf9;
+    border-radius: 240px;
+    box-shadow: 0px 0px 10px gray;
+    animation-name: blink;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    /* Agregué esta propiedad buscando una solución al resultado final, cuya animación hace que el footer se desplacé hacia abajo, esto funciona a la perfección (los que hice fue
+    restar los pixeles 10px del nuevo borde y 1px del borde original, así se mantuvo todo en su lugar), no fue necesario omitir esta propiedad de la transición porque no se hacen transiciones con el cambio de altura */
+    height: 42px;
+}
+
+#blog:hover a {
+    color: white;
+    text-shadow: 1px 1px 1px black,
+        1px 2px 1px black,
+        1px 3px 1px black,
+        1px 4px 1px black,
+        1px 5px 1px black,
+        1px 6px 1px black;
+    /* Luego de agregar un cambio de tamaño en el hover del elemento con id blog, se movía el letrero, así que cambié su posición con transform y la propiedad transition omití esta
+    propiedad */
+    transform: translate(-10px, -10px);
+}
+
+@keyframes blink {
+    0% {
+        border: 10px solid #37bcf9;
+    }
+
+    25% {
+        border: 10px solid green;
+    }
+
+    50% {
+        border: 10px solid yellow;
+    }
+
+    75% {
+        border: 10px solid white;
+    }
+
+    100% {
+        border: 10px solid #37bcf9;
+    }
+}
+
+/* FOOTER */
+
+/* Esta regla CSS aplica los estilos a la caja del footer */
+#footer {
+    width: 100%;
+    height: 470px;
+    background-color: black;
+    color: white;
+    /* Con esta propiedad hace que se oculte todo lo que sobresalga de la caja del footer */
+    overflow: hidden;
+}
+
+/* Con esta regla CSS se dan estilos a cada div dentro del div con clase wrap, que a su vez está dentro del footer (es decir, que se aplicaorn estilos a las cajas que contienen el menú, el mapa y el letrero que dice
+para qué plataformas está optimizada la página)*/
+#footer .wrap>div {
+    float: left;
+    width: 320px;
+    height: 370px;
+    margin: 40px;
+    text-align: center;
+    color: white;
+    font-family: "TrebuchetMS";
+}
+
+/* Con esta regla CSS se dan estilos a los enlaces del footer */
+
+#footer a {
+    text-decoration: none;
+    color: #37bcf9;
+    transition: all 300ms;
+}
+
+/* Con esta regla CSS se dan estilos a los esncabezados del footer */
+#footer h5 {
+    display: block;
+    background: url(../img/pxgray.png), white;
+    height: 50px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: "BebasNeue";
+    font-size: 40px;
+    line-height: 55px;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Con esta reglas CSS se aplicaron estilos a los ul del menú que está en el footer */
+#footer ul {
+    text-align: left;
+    margin: 20px;
+    font-size: 25px;
+}
+
+/* Con esta reglas CSS se aplicaron los estilos a los li que forman parte del menú que está en el footer */
+#footer ul li {
+    margin-top: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Con esta reglas CSS se aplicaron estilos a los enlaces del menú que estpa en el footer */
+#footer ul li a {
+    display: block;
+    height: 40px;
+    transition: all 300ms;
+}
+
+#footer ul li:hover a {
+    padding-left: 40px;
+    color: white;
+    /* Esta propiedad pienso que está de más (aunque Victor dice que es por si acaso) pues con el display block el enlace ya abarca el 100% de la caja que lo contiene */
+    width: 100%;
+}
+
+
+/* Con esta regla CSS se aplicaron los estilos al mapa que está en el footer */
+#footer iframe {
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 5px solid white;
+    box-shadow: 0px 0px 5px gray;
+}
+
+/* Con esta regla CSS se agregó un margen inferior a las imágenes dentro del footer */
+#footer img {
+    margin-bottom: 15px;
+}
+
+/* Con esta regla CSS se aplicaron estilos a las imágenes de los navegadores */
+#footer #browsers img {
+    /* No fue necesario flotar las imágenes de los navegadores porque son elementos de línea y naturalmente se posicionan uno al lado del otro, por otro lado es importante mencionar que con esta propiedad
+    se cambia el tamaño de las imágenes, incluyendo el alto de cada imagen sin necesidad de escribirlo, fue suficiente con definir el ancho*/
+    width: 45px;
+}
