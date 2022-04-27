@@ -2,10 +2,9 @@
     margin: 0px;
     padding: 0px;
 }
-
-.clearfix{ /*Esta regla CSS se hizo para limpiar unos flotados y que se detecte el tamaño de lo que contiene el #content*/
+/*.clearfix{ Esta regla CSS se hizo para limpiar unos flotados y que se detecte el tamaño de lo que contiene el #content
     
-}
+}*/
 
 /*Para maquetar una web en responsive hay que pensar en porcentajes para las cajas más que en pixeles, porque un porcentaje se adapta al tamaño de la caja 
 que lo contiene y a la pantalla, en cambio si se colocan medidas en pixeles, esto siempre mantendrá el mismo tamaño (Esto es una de las claves para hacer 
