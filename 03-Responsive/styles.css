@@ -57,3 +57,10 @@ aside{
     float: left;
     margin: 15px;
 }
+/*desde la anchura 0px a 888px habra estos estilo si no se ejecutan los de arriba*/
+@media (max-width:888px){
+    #articles article{
+        width: 40%;
+        background-color: red;
+    }
+}
