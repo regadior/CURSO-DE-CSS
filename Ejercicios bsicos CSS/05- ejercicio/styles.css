@@ -1,0 +1,151 @@
+/*
+Ejercicio completo con HTML y CSS
+
+(HECHO) 1. Crear un documento HTML y vincularlo con un CSS
+(HECHO) 2. Crear una estructura HTML que cuente conun CONTENEDOR GENERAL,CABECERA, MENÚ, BARRA LATERAL,SECCIÓN 
+DE CONTENIDO PRINCIPAL, ELEMENTOS DENTRO DEL CONTENEDOR PRINCIPAL Y FOOTER.
+(HECHO)3. Todo el contenido debe estar dentro del contenedor general, su ancho será de 1200px y debe estar centrado.
+(HECHO)4. La cabecera debe abarcar el 100% del ancho y tener un texto grande y centrado.
+(HECHO)5. Menú debe tener los elementos uno al lado del otro.
+(HECHO)6. El contenido principal debe tener un ancho del 70%.
+7. El contenido dentro del contenedor principal debe ser una cuadricula con cuatro líneas de dos cajas
+(HECHO)8. La barra lateral debe tener un ancho del 30%.
+9. El footer debe tener un ancho del 100% del div que lo contiene y estar abajo de todo.
+*/
+
+/*Para el punto 1 se resetearán los márgenes y paddings con un selector universal, también se eliminarán las decoraciones de
+los textos*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Punto 2 ya se hizo en el html*/
+
+/*punto 3*/
+
+#general{ /*Con todas estas propiedades se estableció el ancho de 1200px que se solicitó, s eagregó un borde para ver cuánto
+    abarca el elemento y se añadió un margen superior de 20px para ver la parte superior, auto para que se centrara y 0px
+    de margen inferior*/
+    width: 1200px; /*Esto define el ancho*/
+    border: 1px solid #ccc; /*Esto es el borde*/
+    margin: 20px auto 0px; /*Estos son los márgenes*/
+}
+
+/*Punto 4*/
+
+#header{
+    width: 100%;/*Con esto abarca el 100% del div que lo contiene*/
+    height: 100px;/*Con esto se le dio una altura específica*/
+    background-color: rgb(15, 118, 236);/*Con esto se le dio un color de fondo*/
+    line-height: 95px;/*Con esto se trató de centrar el texto (No es la forma más correcta de hacerlo, más adelante se trata
+    la forma correcta)*/
+    text-align: center; /*Con esto se centró el texto*/
+    color: white; /*Con esto se hizo blanca la letra*/
+}
+
+/*Punto 5*/
+
+#menu{
+    background-color: #eeeeee;
+}
+
+#menu ul li{ /*Con este selector se aplicaron los estilos específicamente los elementos li dentro del ul que a su vez está
+    dentro del elemento nav con el id menu*/
+    /*display: inline-block;*/ /*Se pide que los elemento del menú estén uno al lado del otro, y esto se puede hacer con la
+    propiedad display: inline-block, pues hará que los li actpuen como elementos de línea, poniendose uno al lado del otro,
+    pero se empleará el float*/
+
+    display: block; /*Con esta propiedad los li actúan como elementos de bloque, se les borra la viñeta de lista y se com-
+    portan como un elemento independiente al que le podemos modificar su margen, padding, ancho, altura, etc.*/
+    float: left; /*Con esta propiedad se flotaron los elementos del menu, haciendo que se pongan uno al lado del otro, sin
+    embargo, este flotado afecta al siguiente elemento, por lo que deberá agregarse un clerfix para limpiar los flotados
+    y que los elementos siguientes se mantengan abajo*/
+    /*padding: 10px;*/ /*Con esto se agregó margen interior a los elementos del menú, pero se cambió después para arreglar
+    el hecho de que no se hacía click en el enlace al hacer click en la caja que lo contiene, entonces se agregó el padding
+    a los enlaces para arrelar esto*/
+    border-right: 1px solid #ccc ;/*Con este borde derecho se agregó para que se aun separador entre cada elemento*/
+}
+
+#menu ul li a{ /*Con esta regla se hacen cosas muy importantes, se resuelve el hecho de la tanto el enlace como la caja que lo 
+    contiene sirva al hacerle click*/
+    color: #444444;/*Con esto se cambió el color de los enlaces del azul que aparece por defecto a gris*/
+    display: block; /*Esto se hizo para que los elementos a abarquen toda la caja que los contiene, y así arreglar que se pue-
+    da hacer click en la caja que los contiene para usar el enlace*/
+    padding: 10px; /*Estos es el padding que tenía el li, se colocaron acá para que se aplique el tamaño a los enlaces
+    como tal*/
+}
+
+#menu ul li:hover { /*La pseudoclase :hover hace que un elemento agarre un estilo al pasar el cursor sobre el, en este caso
+    se indica que al pasar el mouse sobre los li que están dentro del ul que a su vez están dentro del elemento con el id
+    menu, el fondo debe cambiar a azul*/
+    background-color: rgb(19, 76, 141);/*Este es el color de fondo que se aplicará al pasar el cursos sobre el elemento li*/
+    cursor: pointer; /*Con esto se estableció que el cursos al estar sobre los li será una mano señalando*/
+}
+
+#menu ul li:hover a{ /*Aquí se hizo algo parecido, solo que se indica que los elementos a deben cambiar a color de texto
+    blanco cuando se pasa el mouse sobre los li que son hijos del ul que a su vez son hijos del elemento con el id menu (es
+    decir que no está afectando a los li directamente sino a los enlaces que contienen*/
+    color: white;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+/*Puntos 6 y 8*/
+
+#contenido{
+    width: 70%;/*Con esta propiedad ya se dio al contenido el ancho que se solicitó, el 70% del section que lo contiene*/
+    /*border: 1px solid red;*/ /*Se agregó este borde para ver qué ocupa, luego se comenta*/
+    float: left; /*Se agregó esto para hacer flotar un elemento al lado del otro, sin embargo esto no fue suficiente, no
+    funcionó como antes, por lo que se procedió a agregar un float a la barra lateral también y así si flotaron ambos como
+    se quería*/    
+}
+
+#lateral{
+    width: 29%; /*No se pudo colocar el 30% porque los elementos chocan con sus tamaños, ya que se les suma el margen etc. 
+    Entonces se disminuyó un poco el porcnetaje para que cupieran uno al lado del otro y así funcionara el flotado*/ 
+    border: 1px solid green;/*Seagregó este borde para ver qué ocupa*/
+    float: left;/*Este float se agregó puesto que no se flotaba el elemento al lado del anterior solo con aplicar el float
+    al elemento anterior, al agregar este float ya se desplaza a donde se quiere*/
+    min-height: 500px;
+    text-align: center/*Con esto se centró el texto de la barra lateral*/;
+}
+
+/*Punto 7*/
+
+#contenido > h1{
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#contenido .caja{
+    width: 40%;
+    height: 250px;
+    background-color: red;
+    border: 5px solid blue;
+    color: white;
+    float: left;
+    margin: 20px;
+    margin-left: 40px;
+}
+/*Punto 8*/
+
+#footer{
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #eeeeee;
+    text-align: center;
+    color: #444;
+    /*padding: 20px; Victor agregó este padding pero el elemento terminó excediendo el tamaño deseado pues ahora s ele sumaban
+    los 20px de padding, yo pensé que con el box-sizing con el valor border box se arreglaría y así es, funciona pero para
+    seguir con el curso tal cual se hará lo que Victor dice, y se declarará la altura de footer, en lugar de su padding*/
+    border-top: 1px solid #ccc;
+}

@@ -1,0 +1,175 @@
+@font-face{
+    font-family: bonito;
+    src: url("../../02 - fuentes/fonts/FrederickatheGreat-Regular.ttf");
+}
+body{
+    box-sizing: border-box;
+    background-color: rgb(101, 112, 146);
+}
+h1{
+    font-size: 40px;
+    background-color: #216cb3;
+    color: white;
+    text-align: center;
+    padding: 25PX;
+    margin-right: auto;
+    margin-left: auto;
+    width: 500px;
+    border: 2px solid black;
+    font-family: bonito;
+    font-weight: normal;
+    
+}
+
+p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+div{
+    box-sizing: border-box;
+    border: 2px solid black;
+    margin: 0px 0px 25px 0px;
+    background-color: white;
+    padding-left: 0;
+}
+
+.palabra1,
+.palabra2,
+{
+    font-size: 60px;
+}
+
+.palabra3{
+    font-size: 90px;
+}
+
+
+.tittle{
+    box-sizing: border-box;
+    background-color: #216cb3;
+    border-bottom: 2px solid black;
+    color: white;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 25px;
+    
+}
+
+
+.arriba{
+    vertical-align: 150%;
+    background-color: salmon;
+}
+
+.abajo{
+    vertical-align: -150%;
+    background-color: salmon;
+}
+
+.baseline, 
+.super,
+.sub,
+.top,
+.bottom,
+.text-top,
+.text-bottom,
+.positivo,
+.negativo{
+    background-color: yellow;
+}
+
+.super{
+vertical-align: super;
+}
+
+.sub{
+    vertical-align: sub;
+}
+
+.top{
+    vertical-align: top;
+}
+
+.bottom{
+    vertical-align: bottom;
+}
+
+.text-top{
+    vertical-align: text-top;
+}
+
+.text-bottom{
+    vertical-align: text-bottom;
+}
+
+.p6,
+.p7{
+    line-height: 70px;
+}
+
+.positivo{
+    vertical-align: 50px;
+}
+
+.negativo{
+    vertical-align: -50px;
+}
+
+.p9{
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.grande{
+    line-height: 100px;
+    font-size: 45px;
+    vertical-align: middle;
+}
+
+table{
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 300px;
+    border-color: black; 
+    margin-left: auto;
+    margin-right: auto;
+    border-width: medium;
+    font-weight: bolder;
+    
+}
+
+.top1,
+.text-top1,
+.middle,
+.text-bottom1,
+.bottom1{
+    border-width: medium;
+}
+
+.top1{
+    vertical-align: top;
+    width: 150px;
+    text-align: center;
+}
+
+.middle{
+    vertical-align: middle;
+    width: 150px;
+    text-align: center;
+}
+
+
+.bottom1{
+    vertical-align: bottom;
+    width: 150px;
+    text-align: center;
+}
+
+img{
+    vertical-align: middle;
+}
+
+

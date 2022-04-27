@@ -1,0 +1,144 @@
+/*
+    ##########SELECTORES##########
+*/
+
+/*Los selectores son los que nos permiten escoger uno o más elementos del documento html para aplicarle un estilo CSS, puede
+seleccionarse por el nombre de la etiqueta, clase, atributo o id, es importante resaltar que cuando se 
+aplican estilos CSS a un elemento varias veces, el que predomina es el último esto escrito, ya que
+los archivos CSS se lees de arriba a abajo, esto e slo que se llama cascada y las razón por la que
+recibe el nombre este tipo de archivo, más adelante se hablará de casos en que esto no ocurre*/
+
+/*Selector universal (es el * y nos permite seleccionar todo el documento html)*/
+
+*{ /*Con esta regla se cambio la funte de toda la página*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Selector de etiqueta (es el nombre de cada etiqueta)*/
+
+h1{ /*Con esta regla se agregaron estilos al h1*/
+    background: red;
+    color: white;
+    padding: 10px;
+    
+}
+
+a{ /*Con sta regla se agregaron estilos a todos los enlaces*/
+    font-size: 18px;
+    color: green;
+    text-decoration: none;
+}
+
+footer a{   /*En esta regla CSS se indica que se cambiará a color rojo el enlace que está dentro del footer, esun selector 
+    descendiente, por eso se pone de color rojo el último enlace nada más*/
+    color: red;
+    cursor: none;
+}
+
+/*Selector de id (es el # con el valor del ID, es importante resaltar que este selector se utiliza para un elemento 
+específico y no varios con el mismo ID, porque los ID no se repiten porque son un identificador único)*/
+
+#descripcion, #titulo{ /*selectores de cualquier tipo separados por coma estarán agrupado, en este caso se aplican los 
+    estilos al elemento con ID titulo y la descripción*/
+    border: 1px solid black;
+    padding: 15px;
+}
+
+#titulo{ /*Lo estlos de CSS se sobreescriben según el orden en que se escriben, con esta regla cambia el fondo y borde 
+    del elemento con el ID titulo, pero mantiene el padding de la regla anterior (No siempre se sobrescribe puesto que está
+    la especificidad)*/
+    background: blue;
+    border: 2px dashed white;
+}
+
+/*Selector de clase (es el . seguido del valor de la clase, la clase a diferencia del ID si se puede usar para selecionar 
+varios elementos)*/
+
+.parrafo{
+    font-style: italic;
+    /*text-decoration: underline;*/
+    font-weight: bold;
+    padding: 10px;
+}
+
+.parrafo1, .parrafo3{
+    background: green;
+    color: white;
+    
+}
+
+.parrafo3{
+    background-color: orange;
+    color: black;
+}
+
+/*Selector de atributo (son dos llaves con el atributo y el vaor o solo el atributo que tenga algún elemento del html, se 
+usa más que todo en los formularios)*/
+
+#usuario form{ /*Aquí se seleccionó la etiqueta form que está dentro del elemento que tiene el ID usuario*/
+    border: 5px solid blue;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+#usuario form *{/*Aquí se seleccionó todo lo que está dentro de la etiqueta form, que a la vez está dentro del elemento con 
+    el ID usuario*/
+    display: block; /*La regla display permite que los elementos se comporten como elemento de bloque o de línea, es decir
+    que vaya una cosa al lado de otra o una debajo de otra*/
+}
+
+[type="text"]{ /*Aquí se seleccionaron los inputs que tienen el atributo type con el valor text, se pueden copiar las 
+    llaves y el atributo directamente, con el valor o sin el valor (Ejemplo: [type="text"] ó [type]), depende de lo 
+    específico que se quiera ser, pero en este caso, al no haber espacio entre el selector de etiqueta y de atributo, se 
+    indica que se selecciona un elemento input que tiene el atributo type text. Puede hacerse esto con clases y ID; 
+    si tuviera un espacio sería un selector descendiente*/
+    margin-bottom: 15px;
+    padding: 15px; /*Con esta propiedad aumenta el tamaño de las cajas de texto de forma vertical*/
+    width: 300px;/*Con esta propiedad aumenta el tamaño de las cajas de texto de forma horizontal*/
+}
+
+input[type="submit"]{
+    background: green;
+    color: white;
+    padding: 15px;/*Esta propiedad cambia el margen entre el contneido y el borde de la caja*/
+    font-size: 15px;/*Esta propiedad cambia el tamaño de la letra*/
+    text-transform: uppercase;/*Esta propiedad me permite transformar los textoas a mayúscula o minúscula, avría según el 
+    valor, uppercase es para mayúscula*/
+    border: 1px solid black; /*Esta propiedad determina el color, grosor y tipo de borde*/
+    cursor: pointer; /*Con esta propiedad se puede establecer cómo será el cursos al pasarlo sobre el elemento, con 
+    pointer la flecha se convertirá en una mano al pasarla sobre el elemento, en este caso el botón para enviar*/
+}
+
+/*Selector hijo (Se hace copiando primero el contenedor y luego el elemento que se quiere modificar, el atributo que tiene o
+la clase, van separados por un espacio; o se puede hacer copiando los elementos, clases o atributos como corresponda, siendo
+separados por un mayor que ">" cuando se quiere ser más específico)*/
+
+#menu > li > a{ /*Aquí se seleccionan los elementos <a> que están dentro del elemento <li>, que a su vez están dentro del 
+    elemento que tiene el id menu (todos seguidos de esa forma específica), es como copiar una ruta específica, al hacer esto 
+    se aplican los estilos a la primera lista y no a la sub-lista, hay otra forma pero es más global y consiste en separar los 
+    elementos por espacios (Ejemplo: #menu li a), al hacer eso se indicaría que se seleccionan TODOS los elementos <a> que 
+    están dentro de un <li> y están dentro del elemento con el id menu, haciendo que los estilos se apliquen a toda la lista 
+    y sublista, porque aunque la sublista es un <ul>, dentro hay elementos <a> contenidos por elementos <li>, no es específico
+    porque toma todo <a> dentro de un <li> mientras que este dentro del elemento con el id menu, aunque no se copie el <ul>.
+    Ambos son selectores hijos o desdendientes, pero según lo que se quiera se usa un método u otro*/
+    font-size: 18px;
+    color: red;
+    text-decoration: none;
+}
+
+/*Prioridad (Esto es una excepción a lo que se menciona anteriormente, cuando se dijo que los estilos se sobreescriben según
+el orden en que aparecen, la excepción es, que si una regla CSS es más específica tendrá más prioridad aunque no sea la 
+última que se ha escrito, en las siguiente líneas de código se puede ver cómo la primera regla se mantiene por se más
+específica que la segunda)*/
+
+#saludo h1{ /*Aunque esta regla no sea la última, se aplica por ser más específica, pero puede cambiarse esto con el 
+    !important*/
+    background: brown;
+}
+
+h1{
+    background-color: blueviolet !important; /*Al agregarle valor !important se da mayor importancia a esta última regla,
+    por lo que, aunque la regla anterior gane en especificidad, se aplicará esta pues eso es lo que hace el !important, dar
+    mayor importancia a la regla en que se escribe*/
+}

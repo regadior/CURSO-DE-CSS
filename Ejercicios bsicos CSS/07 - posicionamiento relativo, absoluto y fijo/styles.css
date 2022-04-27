@@ -1,0 +1,235 @@
+/*
+Este fichero es para aprender sobre el posicionamiento fijo, relativo y absoluto, se está 
+usando el mismo CSS del ejercicio de HTML y CSS con sombras agregadas en la lección ante-
+rior, se eliminarán todos los comentarios explicativos del ejercicio anterior y solo se 
+mantendrán los que correspondan al tema mencionado
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+#general {
+    width: 1200px;
+    border: 1px solid #ccc;
+    margin: 20px auto 0px;
+}
+
+#header {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(15, 118, 236);
+    line-height: 95px;
+    text-align: center;
+    color: white;
+}
+
+#menu {
+    background-color: #eeeeee;
+}
+
+#menu ul li {
+    display: block;
+    float: left;
+    border-right: 1px solid #ccc;
+}
+
+#menu ul li a {
+    color: #444444;
+    display: block;
+    padding: 10px;
+}
+
+#menu ul li:hover {
+    background-color: rgb(19, 76, 141);
+    cursor: pointer;
+}
+
+#menu ul li:hover a {
+    color: white;
+}
+
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+/*Puntos 6 y 8*/
+
+#contenido {
+    width: 70%;
+    float: left;
+}
+
+#lateral {
+    /*En esta regla se podrá conocer la regla overflow*/
+    width: 29%;
+    border: 1px solid green;
+    float: left;
+    min-height: 500px;
+    text-align: center;
+    max-height: 500px;
+    /*Se agregó esta propiedad para limitar la altura de la caja, al hacer esto, si se le agrega mucho con-
+    tenido, parte de él se saldrá de la caja, y se debe arreglar con la propiedad overflow (se agregó un texto grande de prue-
+    ba a la barra lateral para aplicar el overflow)*/
+    overflow-y: scroll;
+    /*Esta propiedad nos permite hacer visible el contenido que sobresaldrá de la caja por tener un tamaño
+    limitado, ocultarlo o agregar un scroll (una barra de desplazamiento para poder ver todo el contenido aunque sea más gran-
+    de que la caja). Con el valor hidden se oculta todo lo que se salga de la caja, el valor visible se hace visible al conte-
+    nido que sobresale de la caja y con el valor scroll se agrega la barra de desplazamiento. Con el valor scroll automática-
+    mente se agrega una barra de desplazamiento vertical y otra de desplazamiento horizontal, si se quiere solo la barra ver-
+    tical se debe usar la propiedad overflow-y, si se quiere solo la barra horizontal se usa la propiedad overflow-x; para
+    el resto de valores solo se copia overflow. Además hay un valor auto, con el que automáticamente se agregan las barras de
+    desplazamiento que se necesiten, sean verticales u horizontales Se puede ver cómo son las variantes en el siguiente 
+    ejemplo:
+    
+    overflow: auto;
+    overflow: visible;
+    overflow: hidden;
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: scroll;
+
+    Es importante resaltar que si el contenido puede moverse con scroll verticalmente y solo se agrega la propiedad
+    overflow-x, igualmente se agregarán tanto la barra de desplazamiento horizontal como vertical. En caso de que no se pueda
+    mover el contenido verticalmente, se agregará solo la barra de desplazamiento horizontal como se indica en el código. 
+    Lo mismo ocurre si se hace algo parecido con el overflow-y; es decir, que si el contenido se puede mover horizontalmente,
+    al agregar la propiedad overflow-y no solo se agregará la barra de desplazamiento vertical, sino también la horizontal, y 
+    en el caso en que el contenido no se pueda desplazar horizontalmente, se agregará solo la barra de desplazamiento vertical
+    como se indica en el código.
+    */
+}
+
+#contenido>h1 {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-shadow: 1px 1px 2px grey;
+}
+
+#contenido .caja {
+    width: 40%;
+    height: 250px;
+    background-color: #ccc;
+    border: 1px solid grey;
+    color: #444;
+    float: left;
+    margin: 20px;
+    margin-left: 40px;
+    text-align: center;
+    line-height: 250px;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 10px gray;
+    position: relative; /*Al agregar esta propiedad con el valor relative a las cajas, no pasa nada pues es el posiciona-
+    miento que tenemos por defecto*/
+    /*position: absolute;*/ /*Pero si el valor se cambia a absolute, veremos que todo cambia, ya que no hace caso a los floats ni 
+    a los márgenes, todo se unifica quedándose en la misma posición.*/
+}
+
+.sombra-interior {
+    box-shadow: 5px 5px 10px gray inset !important;
+    border-radius: 50px;
+}
+
+.sombra-interior3 {
+    box-shadow: 5px 5px 10px 10px gray !important;
+    border-radius: 50px 40px 20px 5px !important;
+}
+
+.sombra-interior4 {
+    box-shadow: 5px 5px 2px green,
+        10px 10px 2px blue,
+        15px 15px 2px pink !important;
+    /*border-radius: 50%;*/
+    /*Esto se comentó para hacer la lección de posicionamientos*/
+}
+
+.sombra-interior5 {
+    box-shadow: -5px -5px 10px gray inset !important;
+}
+
+#footer {
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #eeeeee;
+    text-align: center;
+    color: #444;
+    border-top: 1px solid #ccc;
+}
+
+.libre{/*Se explica que esta nueva caja se puede flotar como se ha hecho anteriormente (con la propiedad float), se puede 
+    flotar a la izquierda o a la derecha si se quiere, pero no se podría poner en medio de las cajas grises por ejemplo, o
+    arriba a la derecha o a la izquierda a la mitad de la página, ya que la caja tiene una posición relativa al resto
+    de elementos que se tienen en la web, por lo tanto, lo que se tiene arriba evita que se pueda mover esa caja de esa 
+    forma, al flotarla a la izquierda s emueve a la izquierda y si se flota a la derecha s emueve a la derecha, pero no se
+    pone al lado del contenerdor general, si se agrega un float al contenedor general la caja si sube pero hasta arriba, así
+    no lo queramos.*/
+    border: 1px solid black;
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    position: absolute;/*Para poder mover la caja libremente por donde se quiera en la página, se debe utilizar la posición
+    absoluta, se copia entonces la propiedad position-absolute, pero con esto la caja se mantiene igual, luego se deben 
+    agregar otras propiedades para moverla*/
+    /*top: 0px;*/ /*Con la propiedad top y el valor 0px el elemento con el position absolute se mueve hasta el px 0 de la página
+    , hasta arriba del body, se mueve completamente hacia arriba saltándose cualquier elemento que hubiera, poniéndose por
+    encima de lo que haga falta, el valor en pixeles actúa como un margen, solo que este margen no será relativo al resto de
+    elementos en la página*/
+    left: 50%; /*Con este valor la caja desplaza un 50% desde la izquierda a la derecha (como si fuera un margin-left)*/
+    /*right: 40%;*/ /*Si se agrega la propiedad left y luego la right o viceversa, se aplicará la que aparece primero en el 
+    código*/
+
+    /*Entonces con position-absolute se pueden mover los elemento a cualquier lugar que queramos en la página, saltándonos
+    cualquier posición relativa, cualquier flotado y sin afecta cómo está posicionada el resto de la página*/
+
+    top: 300px; /*Se agregó esto para probar que si s epuede mover la caja a donde se desee*/
+}
+
+.libre1{/*Se creó esta clase para explicar cómo se puede establecer qué elemento se muestra por encima de otro cuando están
+    ubicados en la misma posición. Para determinar qué elemento se dibuja sobre otro se utiliza la propiedad z-index, los 
+    valores de esta propiedad son números enteros (si se usan número negativos el elemento desaparece) y debe aplicarse la 
+    propiedad a los distintos elementos a los que queremos arreglarse la visibilidad sobre otro elemento, si no, se colocan 
+    uno sobre otro en el orden en que aparecen en el código, mostrándose por encima el último elemento copiado*/
+    z-index: 101 /*Los elementos se ordenan de abajo hacia arriba en orden númerico, es decir, que si .libre2 tuviera el valor
+    100 y el .libre1 el valor 101, se mostraría por encima el que tiene mayor cifra, es decir, el .libre1 (por orden en el
+    código debería mostrarse el elemento con la clase .libre2 por encima del elemento con clase .libre1. El valor predetermi-
+    nado del z-index es 1.*/
+}
+
+.libre2{ /*A esta segunda caja no se le coloca position:absolute en la regla CSS porque ya lo tiene, ya que comparte la clase
+    .libre con la caja anterior, solo se agrega la propiedad top para que no se posicione igual que la caja anterior*/
+    background-color: green;
+    top: 280px;/*Se puso un valor distinto a la propiedad top para hacer visible la caja*/
+    left: 52%; /*Con esto se movió el elemento un 52% desde la izquierda*/
+    z-index: 100; /*Se copió la propiedad z-index también para determinar que caja se muestra por encima de la otra, como el
+    valor de la propiedad es menor que la de la caja con clase .libre1, esta caja estará más abajo, mientras que la caja con
+    clase .libre1 estará por encima (por orden de aparición en el código debería ser al revés)*/
+
+
+    /*Es decr que mientras mas alto el z-index, más encima se pondrá el elemento*/
+}
+
+.fija{
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    position: fixed;/*Con esta propiedad se establece una posición fija para el elemento, esta propiedad nos permite al igual
+    que el position: absolute, mover la caja a donde queramos, saltanto las posiciones relativas y el posicionamiento que se 
+    ha establecido en la página web, pero siempre va a estar en una posición fija acompañando al scroll, la caja se moverá
+    junto al desplazamiento que se haga*/
+    left: 0px;/*Se cambió esto para posicionarlo en un lugar distinto a las dos cajas con position: absolute*/
+    top: 50%;/*Se cambió esto para posicionarlo en un lugar distinto a las dos cajas con position: absolute*/
+
+    /*Es importante resaltar que al usar el position: fixed pasa lo mismo que con el valor absolute, el elemento se sale del
+    flujo de la página, es decir que se salta el posicionamiento relativo que tendría en base al resto de la página*/
+}

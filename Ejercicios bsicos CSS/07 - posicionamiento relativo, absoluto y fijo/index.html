@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <meta name="description" content="Descripción de la página">
+    <title>Posicionamiento relativo, absoluto y fijo</title>
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+    <link rel="shortcut icon" href="../img/icono.png">
+</head>
+
+<body>
+    <div id="general">
+        <header id="header">
+            <!--Esta es la cabecera-->
+            <h1>Posicionamiento relativo, absoluto y fijo</h1>
+        </header>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Artículos</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Contactos</a></li>
+            </ul>
+            <div class="clearfix"></div>
+            <!--Se coloca acá el limpiador para limpiar el flotado de bordes de una vez-->
+        </nav>
+
+
+        <section id="contenido">
+
+            <h1>Cajas del contenido principal</h1>
+
+            <div class="caja sombra-interior">
+                <h2>Caja 1</h2>
+            </div>
+
+            <div class="caja sombra-interior2">
+                <h2>Caja 2</h2>
+            </div>
+
+            <div class="caja sombra-interior3">
+                <h2>Caja 3</h2>
+            </div>
+
+            <div class="caja sombra-interior4">
+                <h2>Caja 4</h2>
+            </div>
+
+            <div class="caja sombra-interior5">
+                <h2>Caja 5</h2>
+            </div>
+
+            <div class="caja">
+                <h2>Caja 6</h2>
+            </div>
+
+            <div class="caja">
+                <h2>Caja 7</h2>
+            </div>
+
+            <div class="caja">
+                <h2>Caja 8</h2>
+            </div>
+        </section>
+
+        <aside id="lateral">
+            <div>
+                <h2>Elemento de la barra  <br> lateral</h2>
+                <p>ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio diam, bibendum eget volutpat
+                    ut, placerat in diam. Integer at porta augue. Maecenas quis purus non lectus aliquet efficitur. Cras
+                    congue dignissim dui ac commodo. Maecenas massa odio, placerat sit amet magna vestibulum, commodo
+                    pulvinar est. Nunc bibendum maximus ipsum, vel pellentesque enim dapibus eget. Cras rutrum urna
+                    sollicitudin justo dapibus, feugiat condimentum libero rhoncus.
+
+                    Sed et libero malesuada, pulvinar metus non, euismod tellus. Donec ultrices vel tortor at placerat.
+                    Donec aliquam cursus ligula, eu dictum mauris varius quis. Integer hendrerit nibh at ornare
+                    pellentesque. Nullam egestas dictum est, at iaculis ipsum consectetur vitae. Etiam at neque orci.
+                    Fusce vitae pharetra nisl, id feugiat turpis. Praesent in commodo sapien. Donec tincidunt nunc eros,
+                    a cursus elit congue nec.
+
+                    Pellentesque molestie fermentum nisl a egestas. Suspendisse eget eros a enim sodales porttitor in
+                    vel eros. Nunc volutpat, justo nec dignissim aliquam, lacus nunc aliquam quam, vel iaculis risus
+                    erat sit amet erat. Quisque tortor mauris, ultricies a dui eget, sagittis venenatis nisi. Nullam
+                    ultrices dapibus rhoncus. In hac habitasse platea dictumst. Pellentesque vel lectus mi. Quisque ante
+                    leo, ultricies vel bibendum vel, ornare eget sem. Aliquam ultrices orci nec rutrum molestie. In
+                    tempus est quis nunc eleifend vulputate. Cras elit sem, scelerisque in vulputate a, convallis id
+                    elit. Aliquam laoreet urna eget dui finibus interdum. Ut dignissim mi massa, placerat maximus justo
+                    aliquam ac.
+
+                    Nullam pretium volutpat nisl, quis tincidunt erat ultricies a. In id tortor lacinia, porta sapien
+                    malesuada, volutpat ipsum. Nunc consectetur fringilla placerat. Sed condimentum nulla ultricies
+                    neque porta sollicitudin. Nam nec lacus venenatis, semper nulla et, auctor tellus. Curabitur rutrum
+                    viverra elit, vitae aliquam nulla consectetur at. Mauris a tincidunt lectus. Phasellus varius tempor
+                    accumsan. Aliquam egestas lorem id pellentesque rhoncus.
+
+                    Vestibulum euismod, tortor faucibus dapibus sodales, leo neque iaculis urna, non interdum ante
+                    mauris sed lectus. Donec metus odio, elementum sit amet commodo vel, sagittis a mauris. Ut in
+                    aliquam est, vitae tincidunt purus. Curabitur tincidunt sapien eu hendrerit suscipit. Proin posuere
+                    tellus mollis rhoncus varius. Quisque malesuada commodo lectus et eleifend. Praesent a erat sed arcu
+                    aliquet porta. Sed dapibus tellus non est elementum cursus. Sed non lectus magna. Aliquam euismod
+                    est vel massa feugiat, ac pharetra augue mattis. Cras tempor, eros et vestibulum consectetur, leo
+                    sem dictum lectus, sed feugiat dolor diam vitae dui. Phasellus vitae sodales magna, dignissim
+                    porttitor velit. Suspendisse congue ut eros consequat sodales. Curabitur lacinia arcu aliquam
+                    molestie laoreet. Morbi scelerisque volutpat turpis quis faucibus.</p>
+            </div>
+        </aside>
+
+        <div class="clearfix"></div>
+
+        <footer id="footer">
+            Todos los derechos reservados &copy Victor Robles WEB
+        </footer>
+    </div>
+
+    <div class="libre libre1"><!--Esta caja se agregó para aprender el position: absolute-->
+        Soy la caja libre
+    </div>
+    
+    <div class="libre libre2"><!--Esta caja se agregó para aprender el position: absolute-->
+        Soy la caja libre
+    </div>
+    
+        <div class="libre fija"><!--Esta caja se agregó para aprender el position:fixed -->
+        Soy la caja FIJA
+        </div>
+
+</body>
+
+</html>

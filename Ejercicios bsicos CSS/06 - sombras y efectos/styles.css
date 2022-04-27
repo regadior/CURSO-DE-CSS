@@ -1,0 +1,160 @@
+/*
+Este fichero es para aplicar la sombra a algunos textos y cajas, se está usando el mismo
+CSS del ejercicio de HTML y CSS, se eliminarán todos los comentarios explicativos del ejercicio anterior y solo se mantendrán
+los del ejercicio de sombreados y efectos
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+#general{ 
+    width: 1200px; 
+    border: 1px solid #ccc; 
+    margin: 20px auto 0px; 
+}
+
+#header{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(15, 118, 236);
+    line-height: 95px;
+    text-align: center; 
+    color: white; 
+}
+
+#menu{
+    background-color: #eeeeee;
+}
+
+#menu ul li{
+    display: block;
+    float: left; 
+    border-right: 1px solid #ccc ;
+}
+
+#menu ul li a{ 
+    color: #444444;
+    display: block;
+    padding: 10px; 
+}
+
+#menu ul li:hover { 
+    background-color: rgb(19, 76, 141);
+    cursor: pointer; 
+}
+
+#menu ul li:hover a{ 
+    color: white;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+/*Puntos 6 y 8*/
+
+#contenido{
+    width: 70%;
+    float: left; 
+}
+
+#lateral{
+    width: 29%; 
+    border: 1px solid green;
+    float: left;
+    min-height: 500px;
+    text-align: center;
+}
+
+/*Aquí se modificó la regla para practicar las sombras*/
+
+#contenido > h1{
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-shadow: 1px 1px 2px   grey; /*Con esta propiedad se agregan sombras a los textos, se copian cuatro valores para 
+    definir el sombreado, el primer valor representa el eje X, es decir la sombra en sentido horizontal (si el valor en px 
+    es positivo la sombra se desplazará a la derecha; si el valor es negativo la sombra se desplazará a la izquierda y si el 
+    valor es cero la sombra no se desplaza a ningún lado. El segundo valor representa el eje Y, es decir la sombra en sentido 
+    vertical (si el valor en px es positivo la sombra se desplazará hacia abajo, si el valor es negativo se desplazará hacia
+    arriba y si el valor es cero la sombra no se desplazará a ningún lado); si los valores de los ejes X y Y son 0, y hay algo de difuminado, s epodrá ver una sombra que envuelve al 
+    texto, como si tuviera sombreado por todos lados. El tercer valor también se copia en px y representa el nivel de difumi-
+    nado de la sombra, mientras mayor sea el valor, más difuminada estará la sombra, si el valor es 0 pareciera que la sombra 
+    es otro texto detrás. Con el cuarto valor se define el color de la 
+    sombra. Con los valores que se pusieron se establece que la sombra debe desplazarse 1px a la derecha, 1 pixel abajo, 
+    tener 2px de difuminación y ser de color gris*/
+}
+
+#contenido .caja{
+    width: 40%;
+    height: 250px;
+    background-color: #ccc;/*Se cambió el color de las cajas a gris claro para mejorar el contraste*/
+    border: 1px solid grey;/*Se cambió el borde de 5px a 1px, y de color azul a gris para mejorar el contraste*/
+    color:#444; /*Se cambió el texto de blanco a otro tono de gris*/
+    float: left;
+    margin: 20px;
+    margin-left: 40px;
+    text-align: center;/*Con etso se centró el texto horizontalmente*/
+    line-height: 250px;/*Con etso se centró el texto verticalmente*/
+    text-transform: uppercase; /*Con esto se hizo que todo el texto de las cajas sea mayúscula*/
+    box-shadow: 5px 5px 10px gray;/*Con esta propiedad se agregan sombras a las cajas, los valores funcionan igual que los 
+    de text-shadow, excepto por un quinto valor que s epuede agregar entre el valor de difuminado y el valor del color, este 
+    quinto valor es el spread (este solo se puede aplicar a sombras de cajas), que viene representando cuánto crece o se ex-
+    pande la sombra, practicamente es el tamaño de la sombra siendo un total de cinco valores que representan X, Y, difuminado,
+    spread y color (Con las sombras de puede jugar también agregando colores RGBA con transparencias).*/
+}
+
+.sombra-interior{ /*Se agregó esta clase a la caja número 1*/
+    box-shadow: 5px 5px 10px  gray  inset !important;/*Con el valor inset se crean sombras internas, hacen que el elemento
+    parezca un botón oprimido; si los valores son positivos la X se dibuja a la izquierda y la Y arriba (todo lo contrario que
+    cuando no hay inset) y si se usan valores negativos se dibujan al revés. Se agregó el !important para que tomara en cuenta
+    esta modificación pues el selector anterior ganaba por especificidad y no se aplicaba la sombra interna. Si se dejan los 
+    valores de X y Y en 0 la caja parece completamente oprimida, dando un sentido de profundidad*/
+    border-radius: 50px;/*Con esta propiedad se pueden redondear las esquinas de las cajas, como valor se pueden utilizar px o
+    porcentajes (%), si se quisiera hacer un círculo se podría aplicar un border-radius de 50% a un cuadrado y lo obtendría-
+    mos, si se aplica ese 50% de border-radius a un rectángulo se obtendía un óvalo. A esta propiedad también se le pueden
+    establecer hasta cuatro valores, representando cada uno a una esquina de la caja, comenzando desde la esquina superior iz-
+    quierda en el sentido de las agujas del reloj*/
+}
+
+.sombra-interior3{/*En esta regla se agregó el spread a la caja 3, y se puede ver que la sombra es más grande, debe tenerse
+    mucho cuidado pues si se aumenta mucho el tamaño, la sombra comienza a sobresalir por todos lados y deberán arreglarse
+    los valores de X y Y para compensar esto de forma que la sombra se dibuje más grande pero del lado que queramos*/
+    box-shadow: 5px 5px 10px 10px gray !important;
+    border-radius: 50px 40px 20px 5px !important; /*Aquí se aplicaron distintos border-radius en pixeles a cada esquina, 60px
+    a la superior izquierda, 40px a la superior derecha, 20px a la inferior derecha y 5px a la inferior izquierda*/
+}
+
+.sombra-interior4{ /*Se pueden hacer varios sombreados distintos y ponerles igual o distinta orientación, esto sirve para 
+    hacer algunos efectos, solo deben copiarse varios valores de sombreados separados por comas (,) y al terminar con la úl-
+    tima línea de valores se cierra con punto y coma (;)*/
+    box-shadow: 5px 5px 2px  green,
+                10px 10px 2px  blue,
+                15px 15px 2px  pink!important;
+    border-radius: 50%; /*Con esto se convirtió una caja en un óvalo (porque la caja es rectangular, si fuera un cuadrado
+    habría llegado a ser un círculo, también se puede hacer con el valor 999px)*/
+}
+
+.sombra-interior5{ /*Con esta regla a la caja cinco se le dibuja un sombreado interno pero del lado derecho y hacia abajo
+    por usar valores negativos en el box shadow*/
+    box-shadow: -5px -5px 10px gray inset !important;
+}
+
+#footer{
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #eeeeee;
+    text-align: center;
+    color: #444;
+    /*padding: 20px; Victor agregó este padding pero el elemento terminó excediendo el tamaño deseado pues ahora s ele sumaban
+    los 20px de padding, yo pensé que con el box-sizing con el valor border box se arreglaría y así es, funciona pero para
+    seguir con el curso tal cual se hará lo que Victor dice, y se declarará la altura de footer, en lugar de su padding*/
+    border-top: 1px solid #ccc;
+}

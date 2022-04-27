@@ -1,0 +1,86 @@
+
+/*
+    Una pseudoclase es un selector que marca los elementos que están en un estado específi-
+    co, por ejemplo, los que son el primer elemento de su tipo, o aquellos por los que el 
+    cursor les pasa por encima. Tienden a actuar como si hubieras aplicado una clase en una 
+    parte determinada del documento y, a menudo, ayudan a reducir el exceso de clases y 
+    proporcionan un marcado más flexible y fácil de mantener. Las pseudoclases son palabras
+    clave que comienzan con dos puntos: (Existe muchas pseudoclases, pero ene sta lección se 
+    verán algunas de las más utilizadas)
+*/
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul li{
+    font-size: 20PX;
+}
+
+h1:hover{ /*Con esta pseudoclase se aplican los estilos cuando se pasa el cursos sobre el
+    elemento*/
+    color: greenyellow;
+}
+
+ul li:first-child{ /*Con esta pseudoclase se selecciona el primer hijo de tipo li de la 
+    lista para aplicar los estilos de esta regla CSS*/
+    color: purple;
+    font-weight: bold;
+}
+
+ul li:nth-child(2){ /*Con esta pseudoclase se puede escoger algún hijo de tipo li en especí-
+    fico, se indica con un número a qué hijo se le quiere aplicar los estlos. En este caso
+    se le aplicará un dolor naranja al segundo hijo*/
+    color: orange;
+}
+
+ul li:last-child{ /*Con esta pseudoclase se selecciona el último hijo de tipo li de la 
+    lista para aplicar los estilos de esta regla CSS*/
+    color: gray;
+}
+
+/*Hay varias pseudoclases que se pueden aplica ra los enlaces específicamente*/
+
+#mi-enlace{
+    font-size: 30px;
+    color: lightsalmon;
+}
+
+a:link{ /*Con esta pseudoclases se establece que el enlace debe tener los estilos
+    de la regla CSS cuando no se haya visitado (no se aplicará porque lo habremos visitado 
+    ya pero se puede probar agregando otro enlace)*/
+    color: red;
+    /*También e simportante resaltar que si no se coloca bien la dirección del enlace y
+    no se llega a entrar a una página específica, la pseudoclase link sigue aplicando sus
+    estilos pues lo cuenta como que no se visitó ese enlace (con enlaces se desactiva la
+    pseudoclase link al hacer click pues son enlaces vacíos, es una buena forma de probar
+    esto)*/
+}
+
+#mi-enlace:visited{  /*Con esta pseudoclases se establece que el enlace debe tener los estilos
+    de la regla CSS cuando haya sido visitado (no se aplicará porque lo habremos visitado 
+    ya pero se puede probar agregando otro enlace)*/
+    color: orangered;
+}
+
+/*Hay pseudoclases que se pueden aplicar a cualquier elemento html, no solamente a enlaces;
+las psudoclases hover focus y active se suele aplicar a cualquier tipo de elemento*/
+
+#mi-enlace:active{/*Con esta pseudoclase los estilos se aplican al elemento cuando se le
+    hace clic, mientras se mantenga presionado el clic, se mantendrán los estilos*/
+    color: green;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+input[type="text"]{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+
+input[type="text"]:focus{ /*Con la psudoclases:focus, se hace que se apliquen los estilos 
+    cuando se haga foco en un campo del formulario (se hace focus cuando se hace clic en 
+    el campo y se está listo para escribir)*/
+    border: 5px dashed red;
+}
+

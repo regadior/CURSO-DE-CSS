@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Descripción de la página">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cajas en CSS con Victor Robles</title>
+        <link rel="stylesheet" type="text/css" href="./styles.css">
+        <link rel="shortcut icon" href="../img/icono.png">
+    </head>
+    <body>
+        <h1>Cajas en CSS con Victor Robles</h1>
+
+        <!--ELEMENTOS FLOTADOS-->
+
+        <section id="cajas">
+
+            <div class="caja"> <!--Se cambió ID por class, si se quiere ver la primera parte del código
+            de CSS solamente, debe cambiarse el selector de .caja a #caja2 -->
+                <p>Contenido de la caja 1</p>      
+            </div>
+            
+            
+            <div class="caja"> <!--Se cambió ID por class, si se quiere ver la primera parte del código
+                de CSS solamente, debe cambiarse el selector de .caja a #caja2 -->
+                <p>Contenido de la caja 2</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 3</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 4</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 5</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 6</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 7</p>
+            </div>
+
+            <div class="caja">
+                <p>Contenido de la caja 8</p>
+            </div>
+            
+            <div class="caja">
+                <p>Contenido de la caja 9</p>
+            </div>
+
+            <div class="clearfix"></div>
+
+        </section>
+
+        <!--<div class="clearfix"></div> Este elemento funcionará para limpiar los flotados que hay
+        arriba, de forma que los elementos siguiente no tomarán en cuenta a los flotados de arriba, no
+        se adaptarán a los flotandos, lo que hará que mantengan su posición original debajo, es un div 
+        vacío pero se aplican los estilos de la proppiedad clear cuando se ejecute ese código (el 
+        clearfix está comentado porque se movió dentro del section par aque se dibujara el borde que se
+        agregó, no es necesario copiarlo dos veces ya que los elementos no flotados siguen estando afec-
+        tados, manteniendose abajo.-->
+
+        <!--ELEMENTOS NO FLOTADOS QUE SE MANTENGAN ABAJO-->
+        <h1 >Contenido depsués de las cajas posicionadas</h1>
+        <p>Párrafo con texto de prueba</p>
+
+    
+    </body>
+</html>

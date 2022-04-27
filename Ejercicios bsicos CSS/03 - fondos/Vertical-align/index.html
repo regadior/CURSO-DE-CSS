@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <meta name="description" content="Descripción de la página">
+        <title>Práctica de vertical-align</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="shortcut icon" href="../../img/icono.png">
+    </head>
+    <body>
+        <h1>Práctica con vertical-align</h1>
+
+    </body>
+    <div>
+        <p class="tittle">El valor <strong>baseline</strong> alinea la línea base del elemento con la línea base del padre.
+            La línea base de algunos elementos reemplazados , como textarea no está 
+            especificado en la especificación HTML, es decir que su comportamiento puede 
+            cambiar en un navegador u otro; es el valor por defecto así que no afecta la alineación vertical del texto
+        </p>
+        <p class="p1">Vamos a ver como funciona la propiedad <span class="baseline">vertical-align</span> con el valor baseline</p>
+    </div>
+    
+    <div>
+        <p class="tittle">
+            El valor <strong>super</strong> alínea la línea base del elemento con la línea superscript del elemento padre;
+            hace que el texto suba un poco más, es parecido a la etiqueta sup de html, solo que no hace ver más pequeño el
+            elemento al que se aplica (No le afecta el hecho de que haya una palabra más grande, más arriba o más abajo en el 
+            texto ni que se cambie el line-height del texto al que pertenece).
+        </p>
+        <p class="p2">
+            Vamos ver <span class="palabra1">como</span> funciona <span class="arriba">arriba</span>la  <span class="abajo">
+            abajo</span> propiedad <span class="super">vertical-align</span> con el valor 
+            super
+        </p>
+    </div>
+    
+    <div>
+        <p class="tittle">
+            El valor <strong>sub</strong> alínea la línea base del elemento con la línea subíndice del elemento padre;
+            hace que el texto baje un poco más, es parecido a la etiqueta sub de html, solo que no hace ver más pequeño el
+            elemento al que se aplica (No le afecta el hecho de que haya una palabra más grande, más arriba o más abajo en el 
+            texto ni que se cambie el line-height del texto al que pertenece).
+        </p>
+        <p class="p3">
+            Vamos ver <span class="palabra2">como</span> funciona <span class="arriba">arriba</span>la  <span class="abajo">
+                abajo</span> propiedad <span class="sub">vertical-align</span> con el valor 
+            sub
+        </p>
+    </div>
+    
+    <div>
+        <p class="tittle">
+            El valor <strong>top</strong> alínea la parte superior del elemento y sus descendientes con la parte superior de 
+            toda la línea; tiene distintos comportamientos, si en el texto hay una palabra que esté posicionada más arriba, 
+            al aplicar el valor top, el elemento se alineará con esa palabra que está a mayor altura, como se puede ver en 
+            el ejemplo. (Para que el valor top haga efecto deben cumplirse algunas de las condiciones que se muestran en los
+            ejemplos, el line-height no afecta a este valor en sí, parece afectarlo pero solo cuando se cumplen las situaciones
+            que se mencionan en los ejemplos).
+        </p>
+        <p class= "p4">
+            Vamos ver como funciona <span class="arriba">arriba</span>la  <span class="abajo">
+            abajo</span> propiedad <span class="top">vertical-align</span> con el valor top
+        </p>
+
+        <p class="tittle">
+            El valor <strong>top</strong> actúa diferente si hay una palabra más grande en el texto, si hay una palabra más
+            grande en el texto hace que el elemento se posicione un poco más arriba de esa palabra más grande, pero si hay alguna palabra del texto que esté posicionada más arriba que el resto, el valor top toma 
+            en cuenta esta palabra que está más arriba como referencia (para alinear como en el ejemplo anterior), solo a 
+            partir de cierto punto en que la palabra más grande del texto es menos alta que la posición de la palabra más 
+            alta. (Lo que me parece más lógico es usar el valor top para alinear el elemento con la palabra que esté posicionada
+            más arriba respecto a altura).
+        </p>
+
+        <p class= "p4">
+            Vamos ver <span class="palabra3">como</span> funciona  <span class="arriba">arriba</span> la abajo  propiedad <span class="top">vertical-align</span> con el valor top
+        </p>s
+    </div>
+   
+    <div>
+        <p class="tittle">
+            El valor <strong>bottom</strong> alínea la parte inferior del elemento y sus descendientes con la parte inferior 
+            de toda la línea.; tiene distintos comportamientos (aunque no tan útiles como pasa con el valor <strong>top</strong>),
+            si en el texto hay una palabra que esté posicionada más abajo, al aplicar el valor bottom, el elemento se alineará con 
+            esa palabra que está a menor altura, como se puede ver en el ejemplo. (Para que el valor bottom haga efecto deben cumplirse 
+            algunas de las condiciones que se muestran en los ejemplos, el line-height no afecta a este valor en sí, parece afectarlo 
+            pero solo cuando se cumplen las situaciones que se mencionan en los ejemplos).
+        </p>
+        <p class= "p5">
+            Vamos ver como funciona <span class="arriba">arriba</span>la  <span class="abajo">
+            abajo</span> propiedad <span class="bottom">vertical-align</span> con el valor top
+        </p>
+
+        <p class="tittle">
+            El valor <strong>bottom</strong> actúa diferente si hay una palabra más grande en el texto, pero el resultado no es 
+            tan útil como pasa con el valor <span>top</span>, si hay una palabra más grande en el texto hace que el elemento 
+            se posicione un poco más abajo que la palabra y la línea de texto en sí, como un subíndice (sin hacerse más 
+            pequeño y a una distancia un poco mayor), pero si hay alguna palabra del texto que esté posicionada más abajo 
+            que el resto, el valor bottom toma en cuenta esta palabra que está más abajo como referencia (para alinearse como en 
+            el ejemplo anterior), no se alterna con la palabra más grande pues la palabra siendo más grande es más alta, y nunca
+            más baja que el texto, (Lo que me parece más lógico es usar el valor bottom para alinear el elemento con la palabra que 
+            esté posicionada más abajo respecto a altura).
+        </p>
+
+        <p class= "p5">
+            Vamos ver <span class="palabra3">como</span> funciona  <span class="arriba">arriba</span> la <span>abajo</span>  propiedad 
+            <spanabajo class="bottom">vertical-align</spanabajo> con el valor top
+        </p>
+    </div>
+
+    <div>
+        <p class="tittle">
+            El <strong>text-top</strong> Alinea la parte superior del elemento con la parte superior de la fuente del 
+            elemento principal; el elemento text-top no refleja ningún cambio en la alineación vertical del elemento a menos
+            que se cambie el tamaño de la línea con la propiedad line-height (no se refleja nada aunque haya una palabra más 
+            grande, una palabra más arriba o más abajo en la línea de texto). Para el ejemplo se usó un line-height de 70px. 
+            Al aplicar el valor <strong>text-top</strong>, por lo que alcancé a ver, es como si dijera texto-arriba, es decir, la 
+            línea de texto estará arriba y el elemento al que se aplica text-top estará más abajo que el resto de la línea, como se 
+            ve en el ejemplo. 
+        </p>
+        <p class= "p6">
+            Vamos ver como funciona arriba la abajo propiedad <span class="text-top">vertical-align</span> con el valor text-top
+        </p>
+    </div>
+    
+    <div>
+        <p class="tittle">
+            El <strong>text-bottom</strong> alínea la parte inferior del elemento con la parte inferior de la fuente del 
+            elemento principal; el elemento text-bottom no refleja ningún cambio en la alineación vertical del elemento a menos
+            que se cambie el tamaño de la línea con la propiedad line-height, como ocurre con el valor text-top (no se refleja
+            nada aunque haya una palabra más grande, una palabra más arriba o más abajo en la línea de texto). Para el ejemplo 
+            se usó un line-height de 70px. Al aplicar el valor <strong>text-bottom</strong>, por lo que alcancé a ver, es como si 
+            dijera texto-abajo, es decir, la línea de texto estará arriba y el elemento al que se aplica text-top estará más abajo 
+            que el resto de la línea, como se ve en el ejemplo. 
+        </p>
+        <p class= "p7">
+            Vamos ver como funciona la propiedad <span class="text-bottom">vertical-align</span> con el valor text-top
+        </p>
+    </div>
+
+    <div>
+        <p class="tittle">
+            El <strong>vertical-align</strong> también funciona con porcentajes y px (hay más unidades pero esas son las más
+            comunes). Si se aplican valores positivos el elemento se alínea hacia arriba y si se aplican valores negativos el
+            elemento se alínea hacia abajo, como se puede ver en el ejemplo
+        </p>
+        <p class= "p8">
+            Vamos ver como funciona la propiedad <span class="positivo"> valor positivo</span>-<span class="negativo"> valor negativo</span> con el valor text-top
+        </p>
+    </div>
+
+    <div>
+        <p class="tittle">
+            El <strong>vertical-align</strong> se puede utilizar para elementos de línea y tablas, a continuación se puede ver
+            cómo los valores top, middle y bottom (estos tres valores son los más comunes ya que el resto que hemos visto tienen otro
+            comportamiento) afectan a los textos de una tabla. 
+        </p>
+        
+        <table border="1">
+            <tr>
+                <td class="top1">top</td>
+                <td class="middle1">middle</td>
+                <td class="bottom1">bottom</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <p class="tittle">
+            El valor <strong>middle</strong> alínea la mitad del elemento con la mitad de las letras minúsculas del padre, a 
+            pesar de este concepto sacado de internet, al probar con una palabra que sea más grande por ejemplo, no se alínea
+            con la mitad de las minúsculas del texto. Este valor funciona para alínear o centrar verticalmente una imagen con la
+            línea de texto, es lo que he visto hasta ahora.
+        </p>
+        <p class= "p8">
+            Vamos ver como funciona el valor middle de vertical-align con <img src="../img/fondo.jpg" width="30px" height="30px">  la imagen anterior
+        </p>
+    </div>
+
+    </html>

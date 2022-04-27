@@ -1,0 +1,158 @@
+
+/*Fondos*/
+/* Existe varias propiedades para los fondos, y lo mejor es usarlas de forma específica, puesto 
+que hay una propiedad que se llama background a la que se le puede agregar cualquier valor que corres-
+ponda a algún background; por ejemplo, si se va a a aplicar un color se debe usar background-color, si
+se va a a aplicar una imagen se debe utilizar background-image.*/
+
+body{
+    background-color: #cccccc; /*Esta propiedad se utiliza para aplicar un color como fondo*/
+    background-image: url("./img/patron2.jpg"); /*Esta propiedad permite establecer una imagen como
+    fondo de cualquier elemento*/
+}
+
+#caja{
+    border: 5px solid black;
+    padding: 10px;
+    background-color: rgb(66, 219, 155);
+    color: white;
+}
+
+h2{
+    color:black;
+    background-color: rgb(66, 219, 155);
+    background-image: url("./img/patron3.jpg"); /*Esto aplicó una imagen como fondo, la imagen no per-
+    mite que se vea el color de fondo*/
+    border: 5px solid #000000;
+}
+
+/*Además de lo que se menciona anteriormente, también se pueden ajustar varias cosas, como si el fondo 
+se repite o no, la posición de ese fondo y el attachment (que es si te acompaña el fondo mientras se
+hace scroll o no)*/
+
+/*Existe la propiedad background-repeat, y se usa para indicar que la imagen de fondo debe o no 
+repetirse (cuando es muy pequeña entonces se repetirá para abarcar toda la página) y (vertical) o z (diagonal0])*/
+
+body{
+    background-repeat: repeat;/*Con este valor se le indica que el fondo debe repetirse, este es el 
+    valor por defecto al aplicar una imagen como fondo*/
+}
+
+/*Puede indicarse si se debe repetir en el eje x (horizontal)*/
+
+body{
+    background-repeat: repeat-x; /*Este valor indica que solo debe repetirse horizontalmente*/
+}
+
+/*Puede indicarse si se debe repetir en el eje y (vertical)*/
+
+body{
+    background-repeat: repeat-y; /*Este valor indica que solo debe repetirse de forma vertical*/
+}
+
+/*También se puede indicar que no debe repetirse la imagen de fondo*/
+
+body{
+    background-repeat: no-repeat; /*Este valor indica que la imagen de fondo no debe repetirse; es
+    recomendable usar esto solo cuando se tiene una imagen grande de fondo*/
+}
+
+/*Está la propiedad background-size que se usa para cambiar el tamaño de la imagen de fondo, se puede
+utilizar para indicar que la imagen de fonde debe abarcar el 100% del body por ejemplo*/
+
+body{
+    background-image: url("./img/patron2.jpg");
+    background-size: 100%;/*Esta propiedad hizo que la imagen sin repetirse se hiciera más grande, pero
+    al ser tan pequeña y cambiarse de tamaño se distorsionó; este valor se utiliza para imágenes grandes
+    */
+}
+
+
+/*Existe la propiedad background-attachment, la cual sirve para determinar si la posición de la imagen de 
+fondo será fija dentro de la pantalla o se desplazará con su bloque contenedor al hacer scroll*/
+body{
+    background-image: url("./img/fondo.jpg");/*Esta imagen es más grande que la anterior, por eso no se
+    distorsiona*/
+    background-size:  100%;/*Como la imagen es más grande no se distorsiona al hacerla más grande*/
+    background-attachment: fixed;/*Por defecto el fondo se mueve al hacer scroll, pero al aplicar el 
+    valor fixed, el fondo queda fijo y lo único que se mueve es el contenido al hacer scroll*/
+}
+
+p{ /*Se hizo esta regla para mejorar la visión del texto del párrafo*/
+    color: white; /**/
+    margin-left: 14em;
+    margin-right: 14em;
+}
+
+/*Existe la propiedad background-position que se usa para determinar la posición inicial de la imagen 
+de fondo*/
+
+body{
+    background-position: left bottom ; /*Con esta propiedad se ha establecido que la posición inicial
+    de la imagen de fondo debe ser abajo y a la izquierda. Es importante resaltar que si la imagen es
+    muy pequeña no se posiciona en donde uno puede esperar, y si además de ser una imagen pequeña, no se 
+    establece un background-size de 100%, la imagen de fondo se desplazará  a donde indiquen los valores
+    de background-position*/
+}
+
+/*Con background-size se pueden utilizar los valores 100% por 100%, y de esa forma no se modificará 
+nada aunque agregue el background-position; y se evitará que se pierda algo de la imagen  */
+
+/*Propiedades CSS para textos*/
+
+body{ /*Se quitarán las propiedades aplicadas al body antes para probar con los textos*/
+    background-image: none; /*Este valor elimina la imagen de fondo, Victor en el video comenta todo
+    lo que tiene que ver con fondo, pero al eliminarlo creo que ya es suficiente, además copié las co-
+    sas paso a paso, por lo que no se ve todo igual*/
+}
+
+p{/*Apliqué un color negro al texto para que sea visible*/
+    color:black;
+}
+
+
+#caja{/*Se trabajará con este selector de atributo*/
+    border: 5px solid black;
+    padding: 10px;
+    background-color: rgb(66, 219, 155);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif; /*Con esta propiedad se cambia la fuente, el tipo de
+    letra*/
+
+    text-align: center; /*Esto alinea el texto a la derecha (right), a la izquierda(left) o al centro
+    (center). Es importante resaltar que esta propiedad al usarse con los valores que se mencionan
+    afectan a todos los elementos en línea, es decir que si hay una imagen, esta también se pondrá en 
+    el centro, luego se verán ejemplos de cómo mover las imágenes*/
+
+    line-height: 20px; /*Con esta propiedad se cambia la altura de las líneas, para ver esto, se agregó 
+    un <br> y otra línea en el html al elemento con el id #caja. Como se puso 20px y el texto es más grande 
+    que eso las líneas se juntan*/
+
+    line-height: 50px; /*Con esto los textos ya se separan puesto que tienen una altura de 50px y la 
+    medida es mayor que la que tiene la letra de forma predeterminada, y sepuede concluir que con
+    esta propiedad se puede ajustar la separación que hay entre las líneas de texto*/
+
+    text-transform: uppercase; /*Con esta propiedad se puede modificar el texto para que sea mayúscula
+    o minúscula, s eusa el valor uppercase para mayúscula y lowercase para minúscula*/
+
+    text-decoration: underline double; /*Con esta propiedad se puede adornar el texto agregando una linea infe-
+    rior (underline), una línea superior (overline), una línea intermedia que tacha el texto 
+    (line-through), y se puede hacer que estas líneas sean punteadas (dotted), con guiones (dash) o do-
+    bles (double)*/  
+    
+    vertical-align: top; /*Con esta propiedad se especifica el alineado vertical de un elemento en línea o una celda de una 
+    tabla (aquí no hace ningún cambio porque se aplica a un elemento de bloque). Esta propiedad aunque afecta al texto no 
+    puede aplicarse a elementos de bloque, para elementos de bloque deben usarse las propiedades display: flex y luego 
+    align-items; los valores de esta última propiedad pueden ser flex-start (para alinear el texto del elemento arriba, 
+    flex-end (para alinear el texto del elemento abajo) y center (para alinear el texto del elemento al centro verticalmente). 
+    Agregué un video a la carpeta en donde se explica todo y también un archivo de prueba*/
+
+}
+
+body{
+    text-align: justify; /*Con este valor se justificó el texto del párrafo*/
+    text-indent: 15px; /*Con esta propiedad se agrega una identación al texto, es como una sangría en cada salto de línea*/
+    word-spacing: 10px; /*Con esta propiedad se modifica el espaciado que hay entre las palabras del texto*/
+    letter-spacing: 5px; /*Con esta propiedad se modifica el espaciado que hay entre las letras del texto*/;
+}
+

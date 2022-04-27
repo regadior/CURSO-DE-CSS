@@ -1,0 +1,119 @@
+/*La etiqueta que se usa por excelencia para trabajar con el tema de las cajas es <div>, pero se puede 
+utilizar cualquier otra etiqueta que tenga display: block para comportarse como un elemento de bloque
+o que sea un elemento de bloquee en sí*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.caja{ /*Si se cambia el selector a #caja1, #caja2, se verá la primera parte de la clase sin aplicar el
+    float*/
+    width: 250px; /*Con esta propiedad se da una anchura a las cajas*/
+    height: 250px;/*Con esta propiedad se da una altura a las cajas*/
+    background-color: lightblue; /*Con esta propiedad se aplicó un color de fondo a las cajas*/
+    border: 10px solid red; /*Con esta propiedad se agregó un borde rojo de 10px a las cajas*/
+    margin: 15px; /*Con esta propiedad se da un amrgen a la caja, al escribir un solo valor se aplica
+    en todos los lados el mismo margen*/
+
+    /*La propiedad border es un shorthand, es decir, un atajo para agregar los valores que corresponden
+    a todos los lados de una caja o elemento, si se ponen dos valores el primero valor es para parte
+    supeiror e inferior, y el segundo para derecha e izquierda, si se ponen tres valores, el primero
+    es para la parte superior, el segundo para los lados y el tercero para la parte inferior del elemento
+    y si se colocan cuatro valores, cada uno será para cada lado, en el orden de las agujas del reloj,
+    comenzando desde la parte superior*/
+
+    /*También se puede copiar cad amargen por separado, por ejemplo
+    margin-top: 50px; Esta propiedad e spara margen superior
+    margin-right: 50px; Esta propiedad es para margen derecho
+    margin-bottom: 50px; Esta propiedad es para margen inferior
+    margin-left: 50px; Esta propiedad es para margen izquierdo    
+    */
+
+    padding: 20px; /*El padding es una especie de margen interno, que separa el contenido del borde de
+    la caja, aquí se aplico un padding de 20px a todos lados de la caja, pero funciona igual que el 
+    margin, es decir que se le pueden aplicar uno, dos, tres o cuatro valores, en este caso al aplicar
+    el padding a todos los lados de la caja, la caja creció*/
+}
+
+.caja p{
+    font-weight: bold; /*Con esta propiedad se volvió negrita la fuente*/
+    text-align: center;/*Con esta propiedad se centró el texto horizontalmente*/
+    font-size: 20px;/*Con esta propiedad se cambió el tamaño de la letra*/
+    font-family: Arial, Helvetica, sans-serif;/*Con esta propiedad se cambió la fuente a Arial*/
+    line-height: 235px;/*Con esta propiedad se cambio la altura de la línea de texto, con el fin de
+    tratar de centrar el texto verticalmente, no es la forma más idónea de hacerlo*/
+}
+
+/*El posicionamiento de cajas en CSS normalmente se hace con la propiedad float, es decir que podemos
+hacer flotar algún elemento en la página*/
+
+.caja{ /*Si se cambia el selector a #caja1, #caja2, se verá la primera parte de la clase sin aplicar el
+    float*/
+    width: 250px; 
+    height: 250px;
+    background-color: lightblue;
+    border: 10px solid red; 
+    margin: 15px;
+    padding: 20px;
+    float: left; /*Esta propiedad nos permite mover un elemento (flotarlo ahcia un lado), a la izquierda o 
+    a la derecha, como están seleccionados ambos elementos se posicionarán ambos a la izquierda pero
+    uno al lado del otro, estando primero la caja 1 y luego la caja 2 de izquierda a derecha*/
+
+    /*float: right; Si colocamos el valor right que es derecha, ambas cajas se posicionarán a la derecha
+    (flotando), estando primero la caja 1 y después la caja 2 de derech a izquierda*/
+
+    /*float: none; Si usamos el valor none, se mantienen como estaban de forma predeterminada*/
+
+    /*La propiedad float se puede aplicar a todos los elementos de bloque o a los elementos cuyo 
+    display sea block, es decir que si aplicamos un display:inline (que es como actúan los elementos de
+    texto o imágenes que en un principio no son elementos que están pensados para moverlos de un lado a 
+    otro por la pantalla para colocarlo como queramos), el programa nos indicará que no se puede aplicar 
+    tamaño, márgenes ni la propiedad float*/
+}
+
+/*Al seguir copiando elementos luego de flotar las primeras dos cajas, el nuevo contenido se va hacia 
+arriba, al lado de las cajas flotantes (como si flotara también); para arreglar esto se debe utilizar 
+la propiedad clear*/
+
+.clearfix{
+    float: none; /*Debe usarse float:none para que tenga claro que el nuevo contenido no debe flotar*/
+    clear: both; /*Ahora se agrega esta propiedad que es la que limpia los flotados, haciendo que los
+    nuevos elementos se posicionen normalmente (debajo). El valor both hará que el elemento se posicione
+    debajo, si se usa el valor left también funcionará pues los flotados que hicimos están a la 
+    izquierda, es decir left, pero si usamos el valor right los valores se irán para arriba como si
+    flotaran igualmente pues el flotado no se hizo de ese lado.
+    */
+}
+
+/*#####EJERCICIO CON FLOATS#####*/
+
+/*Para este ejercicio se busca hacer una cuadricula de cajas, por lo que se agregaron 7 cajas más,
+primero se agregaron las cajas y quedaron dos líneas de cuatro cajas puesto que eso es lo que alcanzaban
+a abarcar, había espacio para eso. Pero se busca hacer que sean tres cajas por línea, así que se debe
+cambiar el ancho máximo de la caja que contiene a las cajas pues estas se posicionan según el ancho de
+la caja que los contiene*/
+
+
+
+#cajas{ /*Luego se busco que solo hubieran 3 cajas por líneas, para lo que se delimitó el ancho del
+    div que contiene las cajas, llegando así a las 3 cajas por línea (para ver a partir de que medida
+    aparecen 3 cajas nada más se ingresó a la consola del navegador y se fue modificando el ancho en
+    tiempo real)*/
+    max-width: 1020px; /*Con esta propiedad se estableció cual es el ancho máximo que puede tener el
+    div que contiene las cajas*/
+    border: 2px solid black; /*Se agregó este borde para ver el section que contiene las 9 cajas y así
+    saber como se comporta, pero al poner este borde, vemos que no se dibuja completo, no capta que 
+    contiene a las cajas, es decir que no detecta el tamaño ya que los flotados lo afectan y hacen que 
+    se desplace hacia arriba como pasaba con los elementos que ahora están bajo las cajas (se dibuja 
+    solo el borde superior), por lo que debemos agregar el div con la clase clearfix antes de la 
+    etiqueta de cierre del section que contiene las cajas, ya que el clearfix afecta a los elementos 
+    que le siguen, así se dibujarán los bordes que nos faltan, es decir el borde inferior y laterales.
+    Se puede cambiar el lugar el clearfix que ya había, pues seguirá siendo captado por los elementos
+    siguientes, manteniendolos abajo.*/
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;/*Las tres propiedades margin es para que se vea mejor el borde que se dibujo
+    al section y los elementos queden más separados*/
+}
+

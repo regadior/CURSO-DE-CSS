@@ -1,0 +1,120 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif; /*Con esta propiedad se puede aplicar una fuente diferente al elemento
+    seleccionado (un tipo de letra), al querer escoger una fuente aparecerán varios tipos separados por comas, esto es 
+    porque si no existe en el sistema la primera fuente, trata de aplicar la segunda, y si no existe la segunda ni la primera 
+    trata de aplicar la tercera, y así sucesivamente*/
+}
+
+h2{ /*A este encabezado se le aplicó otra fuente diferente*/
+    font-family: "Comic Sans MS";
+    font-size: 25px; /*Con esta propiedad se cambia el tamaño de las letras en los elementos, como 
+    unidad de medida se pueden utilizar varias unidades de medida pero lo más común son los pixeles o 
+    los em, un em es igual a 16px; las unidades más utilizadas para esta propiedad son los pixeles, los 
+    em y procentajes*/
+    font-weight: lighter; /*Con esta propiedad y valor se hizo menos grueso el letrero, también se 
+    puede hacer menos gruesa la fuente con el valor normal*/
+    font-style: italic; /*Con esta propiedad se puede cambiar el estilo de la fuente; el valor italic
+    hace que la letra sea cursiva, oblique también hace que sea cursiva, initial pone la fuente como
+    viene por defecto, al igual que el valor normal, que pone la fuente como viene por defecto.  Lo 
+    más común es usar el font-style para los valores normal o italic
+    */
+}
+
+p{ /*A este párrafo se le aplicó otra fuente diferente*/
+    font-family: sans-serif; /*Este valor hace que las letras se vean simples*/
+    font-size: 18px; /*Con esta propiedad se hizo más grande el letrero*/
+    font-weight: normal; /*Con esta propiedad se puede modificar el grosor de la letra, lo más común es 
+    usar el bold o bolder para hacer que la letra sea negrita, otros valores son las centenas, van del 
+    100 al 900 y cambian el grosor igualmente, las centenas afectan de forma diferente a cada fuente, 
+    puede llegar a copiarse 100 o 200 y la letra puede no llegar a cambiar por ejemplo, entones se 
+    prueba con un número mayor; Si se quiere hacer menos gruesa la letra se usan  los valores lighter o
+    normal */
+}
+
+/*Fuentes personalizadas con CSS3*/
+
+/*Para exportar fuentes se debe buscar en internet google fonts, seleccionar una fuente y se generará
+una etiqueta <link> la cual debemos agregar al <head> de nuestro html y abajo de ese código se indica
+el valor de la propiedad font-family que debe copiarse para que se aplique el estilo. Además de la eti-
+queta <link> también puede generar el código para agregar la fuente con @import, pero este método no
+es recomendable para enlazar CSS a nuestro html porque si se enlazan varios CSS, cargan en orden, y si
+la carga de alguno falla, deja de cargar el resto (también aparece la opción para personalizar las 
+fuentes que encontremos)*/
+
+h1{ /*Esta regla sobreescribe a la anterior que está de primero*/
+    font-family: 'Press Start 2P', cursive;
+    font-style: italic; /*Esta línea hace que la letra sea cursiva*/
+    text-transform: uppercase; /*Esta línea convirtió el texto en mayúscula*/
+    font-size: 25px; /*Esta línea hizo más grande el texto*/
+}
+
+/*Otra opción para agregar una fuente a nuestra página es descargar la fuente, luego copiarla en la
+carpeta de nuestro proyecto o en una carpeta nueva que se llame fonts (la carpeta debe estar igual en
+la carpeta de nuestro proyecto), luego se importa la fuente con @font-face (esta es la forma más común
+y se usa para crear una fuente), lo que hay detro del CSS externo de google es este @font-face. Luegos 
+de @font-face van dos llaves y se pueden copiar distintas propiedades*/
+
+@font-face{
+    font-family: fre;/*Con esta propiedad se da nombre a la fuente*/
+    src: url("./fonts/FrederickatheGreat-Regular.ttf"); /*Con la propiedad src se hace lo mismo que con
+    el atributo src de html, se copiar la ruta de algun archivo, esta vez se copiar la ruta de la fuente
+    que descargamos, debe copiarse la propiedad src con el valor url seguido de parentesis y en el inte-
+    rior se copia la ruta de la fuente entre comillas*/
+}
+
+h2{/*Con esta línea ya se aplico la nueva fuente que fue exportada con @font-face*/
+    font-family: fre;
+    font-size: 35px;
+}
+
+/*Se puede concluir que es mejor importar fuentes con @font-face porque ya estará la fuente en nuestro 
+proyecto en lugar de estar en un servidor de internet*/
+
+/*Colores*/
+
+/*Lo colores se pueden aplicar a una fuente, a un borde, a un fondo etc.*/
+
+/*Para los colores se pueden utilizar:
+
++ Colores del sistema: Se puede ver cuáles son los colores del sistema si se busca en google CSS colors default, todos esos
+colores son los que tiene CSS por defecto y ya vienen con un alias.*/
+
+h1{
+    color: lightgreen;
+}
+
+
+/*+Colores hexagecimales: Son colores que se escriben con un numeral y un código*/
+
+h1{ 
+    color: #FF4654; /*Se aplicó un color rojizo con código hexagecimal; existe un valor para la propiedad color que hace que
+    el elemento al que se le aplique sea transparente, ese valor es transparent. En VScode aparece un color pick al pasar
+    el mouse sobre el código hexagecimal, y así puedes seleccionar cualquier color, y automáticamente se genera el código
+    hexagecimal de ese color. En la página en donde se pueden ver los colores por defecto de CSS también aparecen los
+    colores identificados por código hexagecimal, y firefox y chrome tiene un color picker que identifica el color que 
+    quieras en código hexagecimal. Una cosa importante también es tener en cuenta que en el mismo navegador se pueden 
+    modificar los estilos CSS, las modificaciones no se guardan pero sirven para ver los c ambios en tiempo real. 
+    Esto se hace con las herramientas del desarrollador*/
+}
+
+/*+Colores RGB: Son los colores obtenidos por la mezcla del color rojo, verde y azul en distintos grados, y se representan
+con un código distinto. Hay herramientas que se pueden buscar en internet para generar este código, como RGB generator por
+ejemplo, se copia la propiedad de color que se necesite, y como valor las siglas rgb seguidas de un parentesis; dentro del 
+parentesis va el código RGB*/
+
+h1{
+    color: rgb(255, 200, 77);
+}
+
+/*+Colores RGBA (variante de los RGB); estos colores se diferencian del RGB en que tiene un cuarto valor que permite agregar
+algo de transparencia al color, para el color original sin transparencia se escribe como cuarto valor el número 1, pero a me-
+dida que se baja de 1 se agrega transparencia al color */
+
+h1{
+    color: rgba(255, 199, 77, 0.685);
+}
+
+/*Ya con esto se sabe cómo trabajan los colores en CSS, pero lo más común es utilizar el color picker para obtener un código
+RGB, RGBA o hexagecimal*/
+
+
