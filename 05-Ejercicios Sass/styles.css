@@ -1,0 +1,473 @@
+@charset "UTF-8";
+h1 {
+  text-decoration: underline;
+}
+
+/* Esto estaba solo al comienzo y era el contenido de este módulo */
+span {
+  font-weight: bold;
+  background-color: black;
+}
+
+/*Una de las funciones que agrega SASS a CSS son las variables, una variable es un contenedor de información, en este caso se pueden crear variables con los estilos que se quieren usar en el sitio web, para declarar 
+una variable (dar nombre a la variable) se utiliza el signo de dólar ($) seguido del nombre de la variable y lo que contendrá (al contenido de una variable se le llama valor; una variable se inicializa cuando se 
+establce un valor, si no, es una variable sin inicializar), los estilos como se mencionó anteriormente*/
+/* Los siguientes son ejemplos de variables, la primera se llama fuente-tipica y guarda el tipo de fuente a utilizar, y la segunda variable guarda el color de fondo */
+body {
+  /* Para utilizar los etsilos dentro de las variables se copia la propiedad que se desea modificar y el valor será el nombre de la variable (debe copiarse con el signo de dólar) */
+  background-color: #ccc;
+}
+
+h1 {
+  font-family: sans-serif, Helvetica, Arial;
+  color: red;
+}
+
+/* Otra de las funciones que agrega SASS a CSS son las anidaciones, estas consisten en escribir una regla CSS dentro de otra regla CSS, siendo las reglas internas las que se aplicarán a los elementos hijos del 
+elemento al que se aplica la regla CSS que anida al resto de reglas, es decir que la regla CSS que anida al resto corresponde al contenedor, y las reglas CSS internas corresponden a algún hijo del contenedor */
+/* Este es un ejemplo de las anidaciones */
+.caja {
+  /* Aquí mismo se copian las propiedades que queremos aplicar al elemento que anida el resto de reglas CSS */
+  border: 1px solid black;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+  /* Este h1 se encuentra dentro del elemento con la clase caja */
+  /* Este p se encuentra dentro del elemento con la clase caja */
+  /* Este elemento con clase info se encuentra dentro del elemento con la clase caja */
+}
+.caja h1 {
+  color: blue;
+}
+.caja p {
+  color: green;
+}
+.caja .info {
+  font-size: 10px;
+  /* Se pueden anidar otras reglas CSS dentro de las reglas que ya están anidadas */
+}
+.caja .info .autor {
+  color: orange;
+  font-size: 15px;
+}
+
+/* Un mixin es una función, y una función es un conjunto de instrucciones que se van a ejecutar cada vez que se llame a dicha función */
+/* Para utilizar los mixins se emplea la regla @include seguida del nombre del mixin */
+.caja {
+  /* Con esto ya se aplicará la instruncciones de estilo del mixiin a este elemento */
+  border: 5px solid red;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+}
+
+.listado {
+  /* Con esto ya se aplicará la instruncciones de estilo del mixiin a este elemento, en este caso reutilizando el mismo mixin */
+  border: 5px solid red;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+}
+
+/* Dentro del paréntesis del mixin puedo colocar algún parámetro (variable) para que el mixin/función actué de forma diferente cuando yo quiera, porque al usarlo, cambiaré el valor de dichos parámetros como yo quiera
+copiando el valor dentro del paréntesis al invocar el mixin, como se ve en el siguiente ejemplo (los parámetros reemplazan a los valores de las propiedades que conforman el mixin, no necesariamente deben reemplazar
+todos los valores, pero si deben emplearse todas las variables; se pueden emplear tantas veces como se quiera) */
+.listado2 {
+  /* Con el mixin anterior establecí el orden en que debo copiar los valores de las propiedades (dentro del paréntesis) que lo conforman. Es decir que puedo copiar este mixin y modificarlo al momento de aplicarlo 
+  a un elemento específico (si el mixin se importa con @use, debe copiarse también con el nombre del scss en que se encuentra, un punto y el nombre del mixin), es el mismo caso que con las variables */
+  background-color: #9dd19d;
+  border: 15px dotted brown;
+  font-size: 30px;
+  color: brown;
+  margin-top: 20px;
+}
+
+/* En SASS la herencia se refiere a estilos CSS que se hacen para ser heredados por un elemento que queramos que los herede, de forma que podemos hacer que dichos estilos sean heredados por cualquier elemento a través 
+de las clases, para crear estos estilos que se heredarán se debe hacer una regla CSS cuyo selector comience con el signo de porcentaje (%) como se puede ver en el siguiente ejemplo, seguido del nombre de dichos 
+estilos */
+/* Es importante mencionar que esto es algo interesante pero no revolucionario ya que esto se podía hacer en CSS de forma nativa, pero al final lo que busca hacer SASS es rebajar la cantidad de clases que se utilizan,
+disminuyendo a´si el tamaño del código */
+.alert-success, .alert-danger, .alert {
+  border: 1px solid blue;
+  background-color: #eee;
+  color: grey;
+  padding: 10px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+/* En CSS cuando queremos que varios elementos compartan algún estilo específico, copiamos la misma clase en dichos elementos, así comparten la misma clase CSS, sin embargo con la herencia esto puede no ser así,
+e incluso, pueden hacerse que un elemento herede los estilos, pero modificar algunas de sus propiedades (se crearon dos alertas más para ejemplificar esto que se menciona)*/
+.alert-danger {
+  /* Aquí se modificaron algunos de los valores que se encontraban en la regla que se hereda, haciendo que solo se herede el padding, margin, width y background-color, se modifico el color de la letra y el borde */
+  color: red;
+  border: 1px solid red;
+}
+
+.alert-success {
+  /* Aquí se modificaron algunos de los valores que se encontraban en la regla que se hereda, haciendo que solo se herede el padding, margin, width y background-color, se modifico el color de la letra y el borde */
+  color: green;
+  border: 1px solid green;
+}
+
+/* SASS nos permite hacer operaciones matemáticas dentro de CSS, es una característica más que agregan los preprocesadores en general */
+h1 {
+  /* Aquí el valor de la propiedad será el resultado de una operación matemática (24px de font-size) */
+  font-size: 24px;
+}
+
+.clearfix {
+  clear: both;
+  float: none;
+}
+
+/* Victor puso 900px pero lo cambié así para que quede centrado */
+/* Se crearon más cajas y están dentro de un elemento con clase cajas */
+.cajas {
+  width: 750px;
+  margin: 0 auto;
+}
+
+/* Se puede calcular automáticamente el ancho de un grupo de elementos o un elemento en porcentajes dividiendo el ancho del elemento entre el ancho de la caja que lo contiene y 
+multiplicándolo por el 100%, así automáticamente se calcula el ancho en porcentaje de cada caja contenida */
+.caja {
+  float: left;
+  /* En este caso se divide el ancho de las cajas (200px) entre el ancho de la caja que las contiene (750px) y se divide entre el 100%, obteniendo así el ancho variable que servirá para el responsive */
+  width: 26.6666666667%;
+  margin: 10px;
+}
+
+/* Sass también permite utilizar condicionales y bucles con CSS, funciones que son características de un lenguaje de programación */
+/* Para usar el condicional se copia la regla @if, es importante tener en cuenta que a diferencia de JavaScript, la condición no se copia dentro de un paréntesis */
+/* La condicionales se copian dentro del selector del elemento al que queremos que se aplique */
+/* Aquí se cambia el valor de la variable $color-fondo, pero se mantiene en la página el color de fondo gris, esto se debe a que el código se lee de arriba a abajo y al momento de usarse la variable $color-fondo para 
+el body, el valor es #ccc, en cambio si se usara para definir el body ahora (por debajo del nuevo valor), el body si pasaría a ser negro porque aquí hay una nueva declaración, las propiedades solo toman en cuenta los
+valores establecidos en variables que les anteceden, y por eso el color salmon si se aplica al texto del h1, porque la condición está luego del cambio de valor de la variable a black, y aunque no vemos el color de
+ fondo negro, la condición lee la nueva declaración */
+h1 {
+  /* En esta condición se establece que si la variable $color-fondo es igual a #ccc, el color del h1 cambiará a negro */
+  color: lightsalmon;
+}
+
+/* En esta condición se establece que si la variable $color-fondo es diferente a #ccc, el colo del h2 cambiará a verde */
+h2 {
+  color: green;
+}
+
+/* Esta variable se escribió para ver cómo funciona la condicional if con else if */
+h3 {
+  /* En esta condición se establece que si la variable $color-fondo es igual a #ccc, el color del h3 cambiará a negro */
+  color: black;
+}
+
+/* Para el ciclo @for se usa la regla @for, se escribe una variable que contendrá el valor inicial del contador, la palabra from, el valor inicial de la variable, la palabra through o to y otro número que será el 
+valor final del contador, por ejemplo: @for $variable 1 through/to 10. Esto significa que se repetirá la aplicación de estilos 10 o 9 veces, y se aplicarán a varios elementos, esto depende del selector (serán 9 o 
+10 veces dependiendo de la palabra que se use, through o to) */
+/* Este es el valor inicial del contador (la variable que mencionamos), esto es opcional pues se puede poner el nombre de la variable en el @for sin estar inicializada */
+/* Aquí se escribe el @for, si se copia through se toma en cuenta el último valor del contador, si no, se usa to y se excluye el último valor, en este @for se aplica el estilo a 10 elementos, es importante resaltar
+que se copia la variable como parámetro de la pseudoclase :nth-child, para usar una variable como parámetro de esta pseudoclase se debe interpolar, esto se hace copiando la variable entre dos llaves antecedisas por 
+un numeral variable, esto se debe hacer porque la pseudoclase pide un string como parámetro (aunque lo veamos lo que se escribe como un dato de tipo number en realidad es un string) y al interpolar una variable 
+el valor se number se convierte en string (que es lo que pide la pseudoclase), si esto no se hace no se lee el valor de la variable para el contador y no funciona */
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(1) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 1px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(2) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 2px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(3) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 3px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(4) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 4px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(5) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 5px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(6) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 6px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(7) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 7px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(8) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 8px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(9) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 9px;
+}
+
+/* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+.listado3 ul li:nth-child(10) {
+  /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+  estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+  porque la variable es el contador */
+  font-size: 10px;
+}
+
+/* Creé otro for para ejemplificar cómo podría multiplicar la variable si quisiera, nótese que no creé una variable llamada contador2 para hacer el @for, solo la incluí */
+/* Cabe resaltar también que el orden del contador puede ser descendente, pero se aplicarán los estilos según ese orden */
+.listado4 ul li:nth-child(10) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 50px;
+}
+
+.listado4 ul li:nth-child(9) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 45px;
+}
+
+.listado4 ul li:nth-child(8) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 40px;
+}
+
+.listado4 ul li:nth-child(7) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 35px;
+}
+
+.listado4 ul li:nth-child(6) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 30px;
+}
+
+.listado4 ul li:nth-child(5) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 25px;
+}
+
+.listado4 ul li:nth-child(4) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 20px;
+}
+
+.listado4 ul li:nth-child(3) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 15px;
+}
+
+.listado4 ul li:nth-child(2) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 10px;
+}
+
+.listado4 ul li:nth-child(1) {
+  /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+  para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+  font-size: 5px;
+}
+
+.listado5 ul li:nth-child(1) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 15px;
+}
+
+.listado5 ul li:nth-child(2) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 25px;
+}
+
+.listado5 ul li:nth-child(3) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 35px;
+}
+
+.listado5 ul li:nth-child(4) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 45px;
+}
+
+.listado5 ul li:nth-child(5) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 55px;
+}
+
+.listado5 ul li:nth-child(6) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 65px;
+}
+
+.listado5 ul li:nth-child(7) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 75px;
+}
+
+.listado5 ul li:nth-child(8) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 85px;
+}
+
+.listado5 ul li:nth-child(9) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 95px;
+}
+
+.listado5 ul li:nth-child(10) {
+  /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+  cuidado pues quizás no es el resultado que se quiere */
+  font-size: 105px;
+}
+
+.listado6 ul li:nth-child(1) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 6px;
+}
+
+.listado6 ul li:nth-child(2) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 7px;
+}
+
+.listado6 ul li:nth-child(3) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 8px;
+}
+
+.listado6 ul li:nth-child(4) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 9px;
+}
+
+.listado6 ul li:nth-child(5) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 10px;
+}
+
+.listado6 ul li:nth-child(6) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 11px;
+}
+
+.listado6 ul li:nth-child(7) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 12px;
+}
+
+.listado6 ul li:nth-child(8) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 13px;
+}
+
+.listado6 ul li:nth-child(9) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 14px;
+}
+
+.listado6 ul li:nth-child(10) {
+  /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+  font-size: 15px;
+}
+
+/* Este for lo creé yo para probar su uso, apliqué un borde azul al resto de listas y solo a las listas 3, 4, 5 y 6 */
+.listado3 {
+  border: 5px solid blue;
+  margin-top: 10px;
+}
+
+.listado4 {
+  border: 5px solid blue;
+  margin-top: 10px;
+}
+
+.listado5 {
+  border: 5px solid blue;
+  margin-top: 10px;
+}
+
+.listado6 {
+  border: 5px solid blue;
+  margin-top: 10px;
+}
+
+/* La primera parte de esta lección está en _base */
+/* (esta es la 3ra. función de SASS en el orden del curso, pero se coloca de primero porque a juro debe escribirse primero que cualquier regla scss, es una de las reglas para que funcione [en este caso no hay más 
+reglas porque se movieron al módulo _base]). Otra función que tiene 
+SASS son los módulos (esto no es algo que se agrega a CSS pues es algo que se hace de manera nativa en CSS desde hace tiempo y de muchas formas, esta es otra forma más [es el quivalente a @import de CSS]), estos son
+otros archivos con estilos específicos que podemos importar a nuestro SASS, agregando así algún otro estilo que queramos para algún elemento específico, para esto se debe escribir @use seguido del nombre del archivo 
+que se quiere importar (el nombre del archivo debe escribirse entre comillas y no es necesario escribir su extensión [.scss] porque ya nuestro documento lo reconoce), en resumen se unen varios documentos 
+.scss (varios módulos) con nuestro documento principal (el documento al que importamos) */
+/* Es muy importante resaltar que los SCSS con nombre encabezado y base tienen un guion bajo al comienzo, en la página de SASS se explica que estos son parciales. "Puede crear archivos Sass parciales que contengan 
+pequeños fragmentos de CSS  que puede incluir en otros archivos Sass. Esta es una excelente manera de modularizar su CSS y ayudar a que las cosas sean más fáciles de mantener, un parcial es un archivo Sass nombrado 
+con un guión bajo inicial. Podrías nombrarlo algo como _partial.scss. El guión bajo le permite a Sass saber que el archivo es solo un archivo parcial y que no debe generarse en un archivo CSS". Al invocar estos 
+archivos con la regla @use no es necesario copiar la extensión .scss y tampoco el guion bajo como se puede ver en el siguiente ejemplo */
+/* También es muy importante mencionar que si tuvieramos variables en un módulo que se importa con @use y tratan de usarse dichas variables como valor de una propiedad, no funcionarán, ya que no están declaradas en el
+scss principal y la regla @use no hace a las variables globales (una variable global se puede conseguir con un @import pero este no es recomendado por SASS ya, la variable global puede invocarse desde cualquier 
+documento que la tenga declarada o importada), entonces, para poder acceder a esas variables debemos copiar el nombre del scss, un punto y el nombre de la variable como valor de la propiedad. Por ejemplo: si la 
+variable $color-fondo: #ccc; estuviera en el scss encabezado, para usarla como valor en estilos.scss deberíamos escribir encabezado.$nombre de la variable, si esto no se hace, al compilar habrá un error que indica 
+que la variable no ha sido declarada*/
+/* Este archivo es un módulo, con el se establece un subrayado para los h1 */
+/* Este es otro módulo, con el se modifican los span para que la letra sea más gruesa */
+
+/*# sourceMappingURL=styles.css.map */

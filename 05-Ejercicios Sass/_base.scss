@@ -1,0 +1,314 @@
+/* Esto estaba solo al comienzo y era el contenido de este módulo */
+
+span {
+    font-weight: bold;
+    background-color: black;
+}
+
+// VARIABLES
+
+/*Una de las funciones que agrega SASS a CSS son las variables, una variable es un contenedor de información, en este caso se pueden crear variables con los estilos que se quieren usar en el sitio web, para declarar 
+una variable (dar nombre a la variable) se utiliza el signo de dólar ($) seguido del nombre de la variable y lo que contendrá (al contenido de una variable se le llama valor; una variable se inicializa cuando se 
+establce un valor, si no, es una variable sin inicializar), los estilos como se mencionó anteriormente*/
+
+/* Los siguientes son ejemplos de variables, la primera se llama fuente-tipica y guarda el tipo de fuente a utilizar, y la segunda variable guarda el color de fondo */
+
+$fuente-tipica: sans-serif,
+Helvetica,
+Arial;
+
+$color-fondo: #ccc;
+
+$color-letra: red;
+
+$color-secundario: rgb(122, 20, 20);
+
+$color-sombra: black;
+
+body {
+    /* Para utilizar los etsilos dentro de las variables se copia la propiedad que se desea modificar y el valor será el nombre de la variable (debe copiarse con el signo de dólar) */
+    background-color: $color-fondo;
+}
+
+h1 {
+    font-family: $fuente-tipica;
+    color: $color-letra;
+}
+
+//ANIDACIONES
+
+/* Otra de las funciones que agrega SASS a CSS son las anidaciones, estas consisten en escribir una regla CSS dentro de otra regla CSS, siendo las reglas internas las que se aplicarán a los elementos hijos del 
+elemento al que se aplica la regla CSS que anida al resto de reglas, es decir que la regla CSS que anida al resto corresponde al contenedor, y las reglas CSS internas corresponden a algún hijo del contenedor */
+
+/* Este es un ejemplo de las anidaciones */
+
+.caja {
+
+    /* Aquí mismo se copian las propiedades que queremos aplicar al elemento que anida el resto de reglas CSS */
+    border: 1px solid black;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+
+    /* Este h1 se encuentra dentro del elemento con la clase caja */
+    h1 {
+        color: blue;
+    }
+
+    /* Este p se encuentra dentro del elemento con la clase caja */
+    p {
+        color: green;
+    }
+
+    /* Este elemento con clase info se encuentra dentro del elemento con la clase caja */
+    .info {
+        font-size: 10px;
+
+        /* Se pueden anidar otras reglas CSS dentro de las reglas que ya están anidadas */
+        .autor {
+            color: orange;
+            font-size: 15px;
+        }
+    }
+}
+
+/* Un mixin es una función, y una función es un conjunto de instrucciones que se van a ejecutar cada vez que se llame a dicha función */
+
+@mixin crear-bordes () {
+    border: 5px solid red;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+
+/* Para utilizar los mixins se emplea la regla @include seguida del nombre del mixin */
+
+.caja {
+    /* Con esto ya se aplicará la instruncciones de estilo del mixiin a este elemento */
+    @include crear-bordes();
+}
+
+.listado {
+    /* Con esto ya se aplicará la instruncciones de estilo del mixiin a este elemento, en este caso reutilizando el mismo mixin */
+    @include crear-bordes();
+}
+
+/*Dentro del paréntesis del mixin puedo colocar algún parámetro (variable) para que el mixin/función actué de forma diferente cuando yo quiera, porque al usarlo, cambiaré el valor de dichos parámetros como yo quiera
+copiando el valor dentro del paréntesis al invocar el mixin, como se ve en el siguiente ejemplo (los parámetros reemplazan a los valores de las propiedades que conforman el mixin, no necesariamente deben reemplazar
+todos los valores, pero si deben emplearse todas las variables; se pueden emplear tantas veces como se quiera) */
+
+@mixin caja-completa ($fondo, $border-size, $border-style, $color, $letra-tamano, $margin) {
+    background-color: $fondo;
+    border: $border-size $border-style $color;
+    font-size: $letra-tamano;
+    color: $color;
+    margin-top: $margin;
+
+}
+
+.listado2 {
+    /* Con el mixin anterior establecí el orden en que debo copiar los valores de las propiedades (dentro del paréntesis) que lo conforman. Es decir que puedo copiar este mixin y modificarlo al momento de aplicarlo 
+    a un elemento específico (si el mixin se importa con @use, debe copiarse también con el nombre del scss en que se encuentra, un punto y el nombre del mixin), es el mismo caso que con las variables */
+
+    @include caja-completa(rgb(157, 209, 157), 15px, dotted, brown, 30px, 20px);
+}
+
+//HERENCIA
+
+/* En SASS la herencia se refiere a estilos CSS que se hacen para ser heredados por un elemento que queramos que los herede, de forma que podemos hacer que dichos estilos sean heredados por cualquier elemento a través 
+de las clases, para crear estos estilos que se heredarán se debe hacer una regla CSS cuyo selector comience con el signo de porcentaje (%) como se puede ver en el siguiente ejemplo, seguido del nombre de dichos 
+estilos */
+
+/* Es importante mencionar que esto es algo interesante pero no revolucionario ya que esto se podía hacer en CSS de forma nativa, pero al final lo que busca hacer SASS es rebajar la cantidad de clases que se utilizan,
+disminuyendo a´si el tamaño del código */
+
+%alert-normal {
+    border: 1px solid blue;
+    background-color: #eee;
+    color: grey;
+    padding: 10px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.alert {
+    @extend %alert-normal;
+}
+
+/* En CSS cuando queremos que varios elementos compartan algún estilo específico, copiamos la misma clase en dichos elementos, así comparten la misma clase CSS, sin embargo con la herencia esto puede no ser así,
+e incluso, pueden hacerse que un elemento herede los estilos, pero modificar algunas de sus propiedades (se crearon dos alertas más para ejemplificar esto que se menciona)*/
+
+.alert-danger {
+    @extend %alert-normal;
+    /* Aquí se modificaron algunos de los valores que se encontraban en la regla que se hereda, haciendo que solo se herede el padding, margin, width y background-color, se modifico el color de la letra y el borde */
+    color: red;
+    border: 1px solid red;
+}
+
+.alert-success {
+    @extend %alert-normal;
+    /* Aquí se modificaron algunos de los valores que se encontraban en la regla que se hereda, haciendo que solo se herede el padding, margin, width y background-color, se modifico el color de la letra y el borde */
+    color: green;
+    border: 1px solid green;
+}
+
+//OPERADORES
+
+/* SASS nos permite hacer operaciones matemáticas dentro de CSS, es una característica más que agregan los preprocesadores en general */
+
+h1 {
+    /* Aquí el valor de la propiedad será el resultado de una operación matemática (24px de font-size) */
+    font-size: 20px + 5px - 1px;
+}
+
+.clearfix {
+    clear: both;
+    float: none;
+}
+
+//ESTAS VARIABLES SON LAS MEDIDAS DE LA CAJA CONTENEDORA Y LOS ELEMENTOS CONTENIDOS, se usan en las reglas de abajo
+
+$caja: 200px;
+/* Victor puso 900px pero lo cambié así para que quede centrado */
+$wrap: 750px;
+
+/* Se crearon más cajas y están dentro de un elemento con clase cajas */
+.cajas {
+    width: $wrap;
+    margin: 0 auto;
+}
+
+/* Se puede calcular automáticamente el ancho de un grupo de elementos o un elemento en porcentajes dividiendo el ancho del elemento entre el ancho de la caja que lo contiene y 
+multiplicándolo por el 100%, así automáticamente se calcula el ancho en porcentaje de cada caja contenida */
+.caja {
+    float: left;
+    /* En este caso se divide el ancho de las cajas (200px) entre el ancho de la caja que las contiene (750px) y se divide entre el 100%, obteniendo así el ancho variable que servirá para el responsive */
+    width: $caja/$wrap * 100%;
+    margin: 10px;
+}
+
+/* Sass también permite utilizar condicionales y bucles con CSS, funciones que son características de un lenguaje de programación */
+
+//CONDICIONALES (IF)
+
+/* Para usar el condicional se copia la regla @if, es importante tener en cuenta que a diferencia de JavaScript, la condición no se copia dentro de un paréntesis */
+
+/* La condicionales se copian dentro del selector del elemento al que queremos que se aplique */
+
+
+/* Aquí se cambia el valor de la variable $color-fondo, pero se mantiene en la página el color de fondo gris, esto se debe a que el código se lee de arriba a abajo y al momento de usarse la variable $color-fondo para 
+el body, el valor es #ccc, en cambio si se usara para definir el body ahora (por debajo del nuevo valor), el body si pasaría a ser negro porque aquí hay una nueva declaración, las propiedades solo toman en cuenta los
+valores establecidos en variables que les anteceden, y por eso el color salmon si se aplica al texto del h1, porque la condición está luego del cambio de valor de la variable a black, y aunque no vemos el color de
+ fondo negro, la condición lee la nueva declaración */
+
+$color-fondo: black;
+
+h1 {
+
+    /* En esta condición se establece que si la variable $color-fondo es igual a #ccc, el color del h1 cambiará a negro */
+    @if $color-fondo==#ccc {
+        color: black;
+    }
+
+    /* en lugar de else como en JavaScript se copia la regla @else, acá se establece que, en caso contrario de la condición (si $color-fondo no es igual a #ccc) el color de los letreros deberá ser lightsalmon */
+    @else {
+        color: lightsalmon;
+    }
+
+}
+
+/* En esta condición se establece que si la variable $color-fondo es diferente a #ccc, el colo del h2 cambiará a verde */
+h2 {
+    @if $color-fondo !=#ccc {
+        color: green;
+    }
+
+    @else {
+        color: orangered;
+    }
+}
+
+/* Esta variable se escribió para ver cómo funciona la condicional if con else if */
+$color-fondo: #CCC;
+
+h3 {
+
+    /* En esta condición se establece que si la variable $color-fondo es igual a #ccc, el color del h3 cambiará a negro */
+    @if $color-fondo==#ccc {
+        color: black;
+    }
+
+    /* Luego con la regla @else if se hace que se verifique otra condición. En esta condición se establece que si la variable $color-fondo es igual a black, el color del h3 cambiará a negro lightsalmon */
+    @else if $color-fondo==black {
+        color: lightsalmon;
+    }
+
+    /* Finalmente con la regla @else se establece que si no se cumple ninguna de las condiciones anteriores, el color del h3 cambiará a fuchsia */
+    @else {
+        color: fuchsia;
+    }
+}
+
+//FOR (BUCLE)
+
+/* Para el ciclo @for se usa la regla @for, se escribe una variable que contendrá el valor inicial del contador, la palabra from, el valor inicial de la variable, la palabra through o to y otro número que será el 
+valor final del contador, por ejemplo: @for $variable 1 through/to 10. Esto significa que se repetirá la aplicación de estilos 10 o 9 veces, y se aplicarán a varios elementos, esto depende del selector (serán 9 o 
+10 veces dependiendo de la palabra que se use, through o to) */
+
+/* Este es el valor inicial del contador (la variable que mencionamos), esto es opcional pues se puede poner el nombre de la variable en el @for sin estar inicializada */
+
+$contador: 1;
+
+/* Aquí se escribe el @for, si se copia through se toma en cuenta el último valor del contador, si no, se usa to y se excluye el último valor, en este @for se aplica el estilo a 10 elementos, es importante resaltar
+que se copia la variable como parámetro de la pseudoclase :nth-child, para usar una variable como parámetro de esta pseudoclase se debe interpolar, esto se hace copiando la variable entre dos llaves antecedisas por 
+un numeral #{variable}, esto se debe hacer porque la pseudoclase pide un string como parámetro (aunque lo veamos lo que se escribe como un dato de tipo number en realidad es un string) y al interpolar una variable 
+el valor se number se convierte en string (que es lo que pide la pseudoclase), si esto no se hace no se lee el valor de la variable para el contador y no funciona */
+
+@for $contador from 1 through 10 {
+
+    /* Aqui se interpola la variable, si esto no se hace no se accede al valor de la variable que en este caso es 1, se hace porque el parámetro para la psudoclase debe ser un string (aunque lo veamos como un dato 
+    tipo number normalmente, es un string) y la interpolación convierte el valor de la variable en un string que es lo que se necesita. el contador entonces se mueve de 1 a 10, aplicando así los estilos 10 veces */
+    .listado3 ul li:nth-child(#{$contador}) {
+        /* La variable también debe interpolarse para poder copiar el tipo de unidad que se quiere, en este caso son pixeles, siempre se debe interpolar una variable si algún otro caracter "toca la variable" al no
+        estar interpolada, en este caso px tocaba a la variable, cambiando su nombre, así que se interpola y así si se entiende que el valor de la variable es en unidades de píxeles, se mueve entonces de 1px a 10px 
+        porque la variable es el contador */
+        font-size: #{$contador}px;
+    }
+}
+
+/* Creé otro for para ejemplificar cómo podría multiplicar la variable si quisiera, nótese que no creé una variable llamada contador2 para hacer el @for, solo la incluí */
+/* Cabe resaltar también que el orden del contador puede ser descendente, pero se aplicarán los estilos según ese orden */
+
+@for $contador2 from 10 through 1 {
+
+    .listado4 ul li:nth-child(#{$contador2}) {
+        /* En este caso no se copia la interpolación porque se quiere el number, que se multiplica por 5 pixeles, incluso si se interpola para colocar la unidad que se quiere (pixeles), la operación no se ejecutará 
+        para multiplicar el valor de la variable se copia sin interpolar y la unidad se copia en el número por el que se multiplicará*/
+        font-size: $contador2 * 5px;
+    }
+}
+
+@for $contador3 from 1 through 10 {
+
+    .listado5 ul li:nth-child(#{$contador3}) {
+        /* En este caso se trata de sumar la variable interpolada con 5px pero esto lo que hace es concatenar el valor de la variable con los 5px, es decir que comienza con 15px y termina en 105px, hay que tenber 
+        cuidado pues quizás no es el resultado que se quiere */
+        font-size: #{$contador3}+5px;
+    }
+}
+
+@for $contador4 from 1 through 10 {
+    .listado6 ul li:nth-child(#{$contador4}) {
+        /* En este caso se suma la variable sin interpolar con 5px, y así si se realiza la suma como se quiere, comenzando por 6px y terminando en 1px*/
+        font-size: $contador4 + 5px;
+    }
+}
+
+/* Este for lo creé yo para probar su uso, apliqué un borde azul al resto de listas y solo a las listas 3, 4, 5 y 6 */
+@for $contador5 from 3 through 6 {
+    .listado#{$contador5} {
+        border: 5px solid blue;
+        margin-top: 10px;
+    }
+}
