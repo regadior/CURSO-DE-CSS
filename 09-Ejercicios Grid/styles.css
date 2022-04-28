@@ -1,0 +1,194 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.layout {
+    box-sizing: border-box;
+    height: 700px;
+    width: 90%;
+    margin: 0px auto;
+    border: 3px solid #ccc;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr) 3fr repeat(2, 1fr) 4fr;
+    padding: 10px;
+    grid-gap: 10px;
+}
+
+.layout .box {
+    border: 4px solid #222;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: gray;
+    box-sizing: border-box;
+}
+
+.layout .box:nth-child(1) {
+    background-color: red;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.layout .box:nth-child(2) {
+    background-color: blue;
+    grid-row: 2 / 5;
+}
+
+.layout .box:nth-child(3) {
+    background-color: pink;
+}
+
+.layout .box:nth-child(4) {
+    background-color: lightgreen;
+    grid-row: 3 / 5;
+}
+
+.layout .box:nth-child(5) {
+    background-color: lightskyblue;
+    grid-column: 1 / 3;
+}
+
+.layout .box:nth-child(6) {
+    background-color: lightsalmon;
+    grid-column: 1 / 3;
+}
+
+.layout-web {
+    height: 700px;
+    width: 90%;
+    display: grid;
+    border: 1px solid black;
+    margin: 0px auto;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 2fr 1fr 4fr 1fr;
+}
+
+.layout-web header {
+    background-color: red;
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.layout-web nav {
+    background-color: blue;
+    grid-column: 1 / 3;
+}
+
+.layout-web section {
+    background-color: pink;
+    grid-column: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 2px;
+}
+
+.layout-web section article {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    background-color: #ccc;
+}
+
+.layout-web aside {
+    background-color: lightsalmon;
+    grid-column: 2 / 3;
+}
+
+.layout-web footer {
+    background-color: lightsteelblue;
+    grid-column: 1 / 3;
+}
+
+.layout-web ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.layout-web ul li {
+    flex-grow: 1;
+}
+
+.layout-web-areas {
+    height: 700px;
+    width: 90%;
+    display: grid;
+    border: 1px solid black;
+    margin: 0px auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 150px 70px 1fr 70px;
+    grid-template-areas: "header header header header header" "menu menu menu menu menu" "aside section section section section" "footer footer footer footer footer";
+    grid-row-gap: 4px;
+    grid-column-gap: 4px;
+}
+
+.layout-web-areas header {
+    grid-area: header;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.layout-web-areas nav {
+    grid-area: menu;
+    background-color: blue;
+}
+
+.layout-web-areas section {
+    grid-area: section;
+    background-color: pink;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 2px;
+}
+
+.layout-web-areas section article {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    background-color: #ccc;
+}
+
+.layout-web-areas aside {
+    grid-area: aside;
+    background-color: lightsalmon;
+}
+
+.layout-web-areas footer {
+    grid-area: footer;
+    background-color: lightsteelblue;
+}
+
+.layout-web-areas ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.layout-web-areas ul li {
+    flex-grow: 1;
+}
