@@ -1,0 +1,469 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* FLEX, INLINE-FLEX, FLEX-DIRECTION, COLUMN, ROW, ROW-REVERSE, COLUMN REVERSE */
+
+/* Para trabajar con flexbox se debe aplicar un display: flex a la caja que contiene los elementos que queremos organizar */
+
+#layout {
+    /* Esta es la propiedad que se aplica para trabajar con flexbox, hace lo mismo que el float left, a diferencia de que el contenedor si capta el tamaño de los elementos que contiene sin necesidad de un clearfix.
+    Entonces, al aplicar el display:flex los elementos contenidos se alinearán uno al lado del otro (flex solo actúa dentro de la caja de forma que no afecta al resto de elementos) */
+    display: flex;
+    /* Para determinar si una caja con flexbox organiza los elementos vertical u horizontalmente se utiliza la propiedad flex-direction, dicha propiedad tiene row como valor
+    por defecto, dicho valor hacer que los elementos se organicen horizontalmente (se colocó la propiedad pero solo para verla copiada, no es necesaria para obtener ese resultado ya que es el valor por defecto).
+    Es importante resaltar que las cajas dentro del flexbox se adaptan a su contenido automáticamente, excepto cuando se usa el valor la propiedad en flex-direction:column o column-reverse y la propiedad 
+    display: flex, en dicho caso los elementos contenidos abarcar el 100% del elemento padre */
+    flex-direction: row;
+    /* Se prueba estableciendo un ancho automático pero el ancho automático de los elementos con la propiedad inline-flex es del 100%, por eso al poner la propiedad width: auto el tamaño no se adapta a los elementos
+    que contiene */
+    width: auto;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#layout2 {
+    /* Con este display se colocan los elementos uno al lado del otro, pero adicionalmente, la caja que contiene los elementos a organizar, se adapta a los mismos, su ancho se adapta automáticamente a lo que 
+    contiene, incluso si agregamos más cajas, el contenedor con id layout2 se adapta al contenido */
+    display: inline-flex;
+    /* La propiedad flex-direction con el valor column hace que la caja que contiene los elementos a organizar, organice los elementos como en una columna (verticalmente). En este caso la caja tiene la propiedad
+    display: inline-flex que hace que se adapte al contenido, pero si tuviera la propiedad display: flex, la columna junto a los elementos contenidos abarcarían el 100% del boddy  */
+    flex-direction: column;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#layout3 {
+    display: flex;
+    /* La propiedad flex-direction con el valor row-reverse hace que los elementos contenidos se ubiquen hacia la derecha y en orden inverso, por lo que quedan ahora las cajas organizadas de derecha a izquierda, todo 
+    lo contrarios de lo que se hace en la primera caja*/
+    flex-direction: row-reverse;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#layout4 {
+    /* Se aplicó la propiedad display con el valor flex para ver lo que se mencionó anteriormente, dicho display en conjunto con un flex-direction: column hace que los elementos internos abarquen el 100% del padre */
+    display: flex;
+    /* Se prueba estableciendo un ancho automático pero el ancho automático de los elementos con la propiedad inline-flex es del 100%, por eso al poner la propiedad width: 100% el tamaño no se adapta a los elementos
+    que contiene */
+    /* La propiedad flex-direction con el valor column-reverse hace que los elementos se organicen al revés, es decir de abajo a arriba */
+    flex-direction: column-reverse;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+
+
+/* Entonces con las cajas anteriores podemos ver que con las propiedades display: flex y display: inline-flex podemos escoger si queremos que la caja contenedora abarque el 100% del body o si queremos que se adapte 
+al contenido respectivamente (la caja al adaptarse se puede centrar utilizando un text-align:center), también pudimos ver cómo funciona la propiedad flex-direction y sus distintos valores. Hubo un valor que no se 
+mencionó y es el valor unset, este hace que no se aplique ni column ni row a flex-direction, es decir que hace que se quede con los valores por defecto*/
+
+/* WRAP */
+
+/* En flexbox si integramos bastantes elementos dentro de la caja contenedora y la caja contenedora tiene la propiedad display: flex, los elementos pueden llegar a salirse 
+del contenedor, haciendo que se cree un scroll horizontal para poder visualizar los elementos (con display;inline-flex los elementos no se salen de la caja contenedora pero 
+igual se crea un scroll horizontal), para evitar este problema se debe usar la propiedad flex-wrap con el valor wrap (no wrap es el valor por defecto y es el valor con el que
+tenemos el problema), de esa forma los elementos sobrantes pasarán a posicionarse debajo. Es importante mencionar que este problema se presenta con row o row-inverse, en 
+sentido vertical no se salen los elementos de la caja contenedora */
+
+#layout5 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+    /* Esta es la propiedad que se usa para evitar la creación del scroll horizontal y que los elementos salgan de la caja contenedora (si es posible) */
+    flex-wrap: wrap;
+}
+
+/* FLEX-FLOW */
+
+/* Existe también la propiedad flex-flow que nos permite ahorrarnos una línea de código, porque dicha propiedad puede tener el valor que indica la dirección del flexbox (row o
+column, etc.) y si tiene o no wrap (wrap o no wrap), deben copiarse en ese orden flex-flow: dirección wrap */
+#layout6 {
+    display: flex;
+    /* Esta es la propiedad que nos permite colocar la dirección del flexbox y si tiene wrap o no, ahorrando una de las líneas de código que usamos antes, escribiendo solo una */
+    flex-flow: row wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+/* Esta caja se usó para probar el order de flexbox */
+#layout7 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+
+
+.caja {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border: 4px solid #222;
+    margin: 10px;
+    background-color: gray;
+}
+
+/* ORDER (ORDEN DE LOS ELEMENTOS) */
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+/* Estas clases las creé para aplicar la propiedad order (orden)*/
+
+/* La propiedad order establece el orden en que se presentan los elementos,el valor de esta propiedad debe se run número entero, sin embargo, se deben enumerar todos los 
+elementos para que se presente exactamente el orden que deseamos, debemos poner valor -1 para que un solo elemento se coloque de primero y un valor 2 o mayor para que se coloque
+de último, pero solo fuciona a´si cuando un solo elemento tiene order, del resto se necesita cpalicar order a todos los elementos. Es muy inportante tener en cuenta que al usar 
+el la propiedad flex-direction:row el orden de los elementos es de izquierda a derecha, incluso cuando los reorganizamos y la misma propiedad con el valor row-reverse el orden 
+de los elementos es de derecha a izquerda. En el caso de flex-direction:column los elementos se ordenaa de arriba a abajo, incluso cuando los reorganizamos con order, y si se 
+utiliza column-reverse, los elementos de ordenan de abajo a arriba */
+
+.caja1 {
+    order: 3;
+}
+
+.caja2 {
+    order: 1;
+}
+
+.caja3 {
+    order: 4;
+}
+
+.caja4 {
+    order: 2;
+}
+
+/* FLEX-GROW */
+
+/* Creé esta caja para aplicar flex-grow */
+
+#layout8 {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+
+/* Ahora se estudiará una propiedad que hará que los elementos contenidos dentro de la caja con display:flex, sean de verdad flexibles, es decir, nos permitirá adaptar el tamaño
+de cada elemento contenido a como nos de la gana, dicha propiedad es flex-grow y se agrega a los elementos que son contenidos y no al contenedor como se hace con el resto de las 
+propiedades estudiadas hasta ahora, los valores de dicha propiedad son números enteros, y el valor por defecto es el número 1, con este valor se hace que todas las cajas ocupen 
+el mismo espacio dentro del contenedor*/
+
+/* Hice esta clase para aplica el flex-grow */
+.grow {
+    /* Con este valor todos los elementos comparten el mismo espacio y se adaptan de mejor forma cuando se redimensiona la página */
+    flex-grow: 1;
+}
+
+/* Si se aplica flexgrow a cada cada y se le asigna un número distinto, se indica a cada caja qué tanto espacio pueden ocupar en el contenedor y el resto de las cajas
+se adaptarán a este cambio, se puede aplicar a un solo elemento, a varios o a todos. En el siguiente ejemplo se aplicará a todos */
+
+#layout9 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+/* Estas clases las creé para aplicar un flexgrow distintos a cada caja, en este caso las cajas van de pequeño a grande en el siguiente orden: caja cuatro, caja uno, caja tres
+y caja dos...entonces, el valor de flex-grow mientras más alto, implica un mayor tamaño del elemento, sin embargo, no importa que tan grande sea el valor, siempre se compartirá
+el espacio dentro del contenedor */
+
+.grow1 {
+    flex-grow: 3;
+}
+
+.grow2 {
+    flex-grow: 10;
+}
+
+.grow3 {
+    flex-grow: 7;
+}
+
+.grow4 {
+    flex-grow: 2;
+}
+
+/* FLEX-SHRINK */
+
+/* La propiedad flex-shrink se puede aplicar a algún elemento flexible para que, cuando se redimensione la página y se comiencen a encoger los elementos flexibles, dicho
+elemento con el flex-shrink se encoja más rápido al llegar a un punto extremo del redimensionamiento, es decir, cuando ya no haya espacio suficiente en el contenedor. El valor 
+por defecto de esta propiedad es 1, mientras mayor sea el número más rápido se reducirá el elemento al que se le aplicó dicha propiedad, como veremos en el siguiente ejemplo. 
+Si se aplica el valor 0, el elemento no se encoge cuando no haya espacio suficiente en el contenedor y el resto si. En resumen, esta propiedad nos permite establecer cómo se 
+encogerá un elemento específico al llegar al punto de redimensionamiento que se menciona anteriormente (Esta explicación la busqué por internet ya que Victor no lo explica bien,
+de todas formas está el curso de flexbox de John Mircha para consultar)*/
+
+#layout10 {
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+/* En este caso, cuando se redimensiona la página a un tamaño más pequeño, cuando el contenedor se quede sin espacio, la primera caja se encogerá más rápido que el resto porque
+se le estableció un flex-shrink:4 y el valor por defecto es 1. Mientras más alto el valor de shrink más rápido se encoge la caja con dicha propiedad, y también será mayor la
+diferencia entre la caja con shrink y el resto de cajas al momento en que estas últimas comiencen a encogerse ( y cuando la caja con shrink se haya encogido al máximo)*/
+.shrink1 {
+    flex-shrink: 4;
+    flex-grow: 1;
+}
+
+.shrink2 {
+    flex-grow: 1;
+}
+
+.shrink3 {
+    flex-grow: 1;
+}
+
+.shrink4 {
+    flex-grow: 1;
+}
+
+/* FLEX-BASIS */
+
+/* La propiedad flex-basis representa el tamaño del elemento en la línea (si los elementos se ordenan en fila, flex-basis representará el ancho, y si los elementos se ordenan
+en columna, flex-basis representará el alto, en flex-box este elemento tiene más prioridad que width o height, incluso si width o height ganan en cascada). Víctor dice que es
+como establecer el ancho mínimo del elemento, el valor por defecto de esta propiedad es auto */
+
+
+#layout11 {
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+.basis1 {
+    flex-basis: 25%;
+}
+
+.basis2 {
+    flex-basis: 25%;
+}
+
+.basis3 {
+    flex-basis: 25%;
+}
+
+.basis4 {
+    flex-basis: 25%;
+}
+
+/* FUNCIÓN CALC (esto es en CSS plano, no es flexbox)*/
+
+/* La función calc sirve para establecer el resultado de operaciones matemáticas como el valor de las propiedades como se ve en el siguiente ejemplo*/
+
+/* En este caso es necesario agregar el wrap para que el flex-basis del 100% de la caja 4 se aplique correctamente, dibujándose debajo de las otras tres cajas, cuyo tamaño
+es el resultado de una operación matemática*/
+#layout12 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+.calc1 {
+    /* Aquí y en las siguientes reglas se usó una operación matemática como valor de flex-basis, utilizando así la función calc() */
+    flex-basis: calc((100% / 3) - 68px);
+}
+
+.calc2 {
+    flex-basis: calc((100% / 3) - 68px);
+}
+
+.calc3 {
+    flex-basis: calc((100% / 3) - 68px);
+}
+
+.calc4 {
+    flex-basis: 100%;
+}
+
+/* VARIABLES EN CSS (no forma parte de flex-box)*/
+
+/* En CSS existen las variables, estas deben crearse dentro d euna regla con un selecto :root obligatoriamente, cada variable se crea con dos guiones, el nombre de la variable 
+y el valor que contienen como se puede ver a continuación*/
+
+:root {
+    --aquamarin: aqua;
+}
+
+#layout13 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+
+/* Es importante mencionar que al aplicar flex-basis las cajas dejan de adaptarse tan bien como cuando tenían un flex-grow: 1; por lo que es necesario combinar la propiedad 
+flex-grow con flex-basis. flex-basis lo usamos para dar un tamaño epecífico a las cajas (un tamaño mínimo por decirlo así) y con flex-grow se permite su adaptación a pesar de 
+esa indicación del tamaño mínimo, a medida que se hagan más pequeñas las cajas se adaptarán mejor...se pueden comparar las cajas anteriores con estaa que si tendrá el flex-grow*/
+
+.var {
+    /* Para usar la variable como valor debe usarse la palabra var y entre paréntesis copiar el nombre de la variable antecedido de dos guiones, en este caso se cambió el color
+    de fondo de las últimas cajas por aquamarín, utilizando una variable, sin embargo, aunque existe estas variables en CSS, se termina escribiendo más que con el preprocesador */
+    background-color: var(--aquamarin);
+    /* Aquí se colocó el flex-grow, que permitirá que las cajas se adapten mejor, y estas cajas también tienen las medidas establecida con flex-basis porque comparten con las 
+    cajas anteriores la clase que creé que se llama calc1,2,3 y 4, pero como se puede ver, al hacer más pequeña la página, esta última caja se reduce mejor porque combina 
+    flex-basis y flex-grow. Es como si se estableciera el tamaño de las cajas y al hacerse demasiado pequeña, los elementos flexibles si cambian de tamaño tratando de cumplir 
+    con el flex-grow: 1 que establece que todas las cajas compartirán el mismo espacio...en este caso el 1 es suficiente, si se coloca un valor mayor nada cambiará por el 
+    flex-basis*/
+    flex-grow: 1;
+}
+
+
+/* ALINEACIÓN HORIZONTAL EN FLEXBOX */
+
+/* Para la alineación horizontal de los elementos en flexbox se utiliza una propiedad que se llama justify-content, esta propiedad se aplica al contenedor de los elementos
+flexibles. Si el valor es flex-end los elementos se justifican a la derecha; con flex-start se justifican a la izquierda (como están por defecto); con el valor center se 
+centran los elementos automáticamente; con el valor space-around los elementos se distribuyen uniformemente, dejándose un espacio entre todos los elementos y espacio entre el 
+primer elemento y el lado izquierdo de la caja contenedora y el último elemento y el lado derecho de la caja contenedora; el valor space-between hace que los elementos se sepa-
+ren entre sí, pero que el primer y último elemento se queden pegados al inicio (lado izquierdo) y final (lado derecho) de la caja contenedora respectivamente; también está el 
+valor space-evenly, que da un resultado similar a space-around, con la diferencia de que la distribución es más comprimida entre las cajas y el espacio del primer y último 
+elemento con el inicio y fin de la caja contenedora es más grande */
+
+#layout14 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+}
+
+/* ALINEACIÓN VERTICAL EN FLEXBOX */
+
+/* En flexbox se pueden alinear todos los elementos flexibles (elementos contenidos dentro del contenedor) con la propiedad align-items */
+
+#layout15 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+    justify-content: space-evenly;
+    /* Se dio esta altura al contenedor para poder ver cómo funciona la alineación vertical de flexbox*/
+    height: 600PX;
+    /* Esta es la propiedad que alínea verticalmente a los elementos, sin esta propiedad las cajas llegan a abarcar el 100% del alto. Con el valor baseline las cajas se adaptan
+    al contenido y se mantienen arriba, con center se adapta la caja al contenido y la centran verticalmente, con el valor flex-start también alínea las cajas hacia arriba y el
+    valor flex-end alínea las cajas abajo del contenedor */
+    align-items: center;
+}
+
+/* Se pueden alinear los elementos por separado también, para esto se utiliza la propiedad align-self en cada caja (para esto se créo la clase self1, 2, 3 y 4 ) */
+
+#layout16 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+    justify-content: space-evenly;
+    /* Se dio esta altura al contenedor para poder ver cómo funciona la alineación vertical de flexbox*/
+    height: 600PX;
+    /* Se colocó esto para que las cajas no se extendieran al 100% del contenedor vertticalmente, luego se sobreescribe su posición vertical con align-self */
+    align-items: flex-start;
+}
+
+/* Víctor aplica un margen al segundo elemento para que se forme una especie de escalera entre los elementos, sin embargo también se muestra que */
+
+.self1 {
+    align-self: baseline;
+}
+
+.self2 {
+    /* Aquí se aplicó un margen pero no funciona bien cuando se hace la página más pequeña, es decir que se consigue la escalera pero no funciona bien la adaptación, aunque se
+    puede arreglar con media-queries. En este caso la caja 2 se desplaza en lugar de mantenerse adaptada como el resto   */
+    margin-top: 10%;
+}
+
+.self3 {
+    align-self: center;
+}
+
+.self4 {
+    align-self: flex-end;
+}
+
+/* Ahora se pondrá el ejemplo de la segunda caja centrada verticalmente al centro para ver la diferencia entre esto y el margen aplicado anteriormente al hacer más pequeña la
+página */
+
+#layout17 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    border: 3px solid black;
+    padding: 5px;
+    /* Se dio esta altura al contenedor para poder ver cómo funciona la alineación vertical de flexbox*/
+    height: 600PX;
+    /* Se colocó esto para que las cajas no se extendieran al 100% del contenedor vertticalmente, luego se sobreescribe su posición vertical con align-self */
+    align-items: flex-start;
+}
+
+/* Es flex-grow agregado es para que las cajas compartan el mismo espacio */
+
+.self11 {
+    flex-grow: 1;
+    align-self: baseline;
+}
+
+.self22 {
+    flex-grow: 1;
+    /* Aquí se aplicó un la alineación con align-self en lugar del margen, no se consigue la escalera que quiso hacer Víctor pero si se adapta todo comod debe   */
+    align-self: center;
+}
+
+.self33 {
+    flex-grow: 1;
+    align-self: center;
+}
+
+.self44 {
+    flex-grow: 1;
+    align-self: flex-end;
+}

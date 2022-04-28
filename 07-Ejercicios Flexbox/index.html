@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Descripción de la página">
+    <meta name="viewport" content="width = device-width, user-scalable=no">
+    <title>Máster en CSS con Víctor Robles</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+
+<body>
+    <h1>Máster en CSS con Víctor Robles WEB</h1>
+    <h3>Hoy aprenderemos Flexbox, una nueva forma de organizar elementos y maquetar una web con CSS</h3>
+
+    <!-- Flexbox tiene una peculiaridad y es que nosotros podemos trabajar con flexbox pero tenemos que indicarle cuál va a ser la caja que contendrá los elementos de 
+        flexbox o que contendrá la layout de flexbox, es decir, que con flexbox no se puede seleccionar un solo elemento y trabajar flexbox con dicho elemento, por ejemplo,
+    no puedo seleccionar un h1, o el h3 solo y trabajar con flexbox. En realidad si se quiere organizar elementos y utilizar la layout flexible o el contenido flexible que 
+    nos da flexbox, debemos crear un div y meter dentro todos los elementos que queramos organizar o maquetar utilizando flexbox -->
+
+    <!-- Dentro de la siguiente section estarán los elementos que estaremos organizando con flexbox. Flexbox actuará en donde le indiquemos, en este caso, dentro de la section con id layout. En resumen, flexbox 
+        siempre va a actuar dentro de un div, dentro del cual deben estar los elementos que vamos a organizar o alinear, etc. -->
+
+    <!-- Las siguientes cajas serán organizadas con flexbox, es importante recordar que se debe elegir si queremos que los elementos se organicen horizontalmente o verticalmente, esto se hace cuando se define el
+        layout flexible o el display flex (con row se define que los elementos deben organizarse en fila y con column en columnas, es decir, horizontal o verticalmente respectivamente)-->
+
+    <!-- Con flexbox no hay necesitas de hacer un clearfix (limpiar los flotados) para que los elementos de abajo no se monten hacia arriba -->
+
+    <section id="layout">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <!-- Se agregó este párrafo para comprobar que no se montará hacia arriba como pasa con los flotados -->
+    <p>
+        Hola soy Víctor Robles y este es el máster en CSS, el curso más completo de maquetación web que existe
+    </p>
+
+    <section id="layout2">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout3">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout4">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout5">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout6">
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+        <div class="caja red">
+            Primera caja
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+
+    </section>
+
+    <section id="layout7">
+        <div class="caja red caja1">
+            Primera caja
+        </div>
+
+        <div class="caja green caja2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue caja3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange caja4">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout8">
+        <div class="caja red grow">
+            caja 1
+        </div>
+
+        <div class="caja green grow">
+            caja 2
+        </div>
+
+        <div class="caja blue grow">
+            caja 3
+        </div>
+
+        <div class="caja orange grow">
+            caja 4
+        </div>
+    </section>
+
+    <section id="layout9">
+        <div class="caja red grow1">
+            Primera caja
+        </div>
+
+        <div class="caja green grow2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue grow3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange grow4">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout10">
+        <div class="caja red shrink1">
+            caja 1
+        </div>
+
+        <div class="caja green shrink2">
+            caja 2
+        </div>
+
+        <div class="caja blue shrink3">
+            caja 3
+        </div>
+
+        <div class="caja orange shrink4">
+            caja 4
+        </div>
+    </section>
+
+    <section id="layout11">
+        <div class="caja red basis1">
+            Primera caja
+        </div>
+
+        <div class="caja green basis2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue basis3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange basis4">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout12">
+        <div class="caja red calc1">
+            Primera caja
+        </div>
+
+        <div class="caja green calc2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue calc3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange calc4">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout13">
+        <div class="caja red var calc1">
+            Primera caja
+        </div>
+
+        <div class="caja green var calc2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue var calc3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange var calc4">
+            Cuarta caja
+        </div>
+    </section>
+
+
+
+    <section id="layout14">
+        <div class="caja red justify">
+            <div>Primera caja</div>
+        </div>
+
+        <div class="caja green justify">
+            Segunda caja
+        </div>
+
+        <div class="caja blue justify">
+            Tercera caja
+        </div>
+
+        <div class="caja orange justify">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout15">
+        <div class="caja red">
+            <div>Primera caja</div>
+        </div>
+
+        <div class="caja green">
+            Segunda caja
+        </div>
+
+        <div class="caja blue">
+            Tercera caja
+        </div>
+
+        <div class="caja orange">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout16">
+        <div class="caja red self1">
+            <div>Primera caja</div>
+        </div>
+
+        <div class="caja green self2">
+            Segunda caja
+        </div>
+
+        <div class="caja blue self3">
+            Tercera caja
+        </div>
+
+        <div class="caja orange self4">
+            Cuarta caja
+        </div>
+    </section>
+
+    <section id="layout17">
+        <div class="caja red self11">
+            <div>Primera caja</div>
+        </div>
+
+        <div class="caja green self22">
+            Segunda caja
+        </div>
+
+        <div class="caja blue self33">
+            Tercera caja
+        </div>
+
+        <div class="caja orange self44">
+            Cuarta caja
+        </div>
+    </section>
+
+
+</body>
+
+</html>
