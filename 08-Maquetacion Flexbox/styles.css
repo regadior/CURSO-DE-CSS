@@ -1,0 +1,267 @@
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+#container {
+    width: 90%;
+    height: auto;
+    margin: 0px auto;
+    border: 1px solid rgba(225, 225, 226, 0.8);
+    box-shadow: 0px 0px 10px #ccc;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 600px;
+}
+
+/* Estilos del contenedor con clase header */
+
+#header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 120px;
+    border-bottom: 1px solid rgba(225, 225, 226, 0.8);
+}
+
+.logo {
+    /* Con esta propiedad se estableció el ancho del div que contiene al h1 */
+    flex-basis: 65%;
+    flex-grow: 1;
+    font-family: Helvetica;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 35px;
+    padding: 10px;
+    margin-left: 20px;
+    color: black;
+    text-shadow: 1px 1px 0px #ccc;
+    text-transform: uppercase;
+}
+
+.logo h1 {
+    font-family: Helvetica;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 35px;
+}
+
+#menu {
+    flex-grow: 1;
+    flex-basis: 30%;
+    height: 100%;
+    padding-right: 20px;
+}
+
+#menu>ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    list-style: none;
+}
+
+#menu a {
+    flex-grow: 1;
+    color: #444;
+    text-transform: uppercase;
+    padding: 15px;
+    transition: all 300ms;
+}
+
+#menu a:hover {
+    background-color: #ccc;
+    color: white;
+}
+
+#content {
+    display: flex;
+    /* Esta etiqueta no parece ser necesaria pues con lo que se hace depsués ya se arreglan las cajas */
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#projects {
+    display: flex;
+    flex-flow: row wrap;
+    /* Con esto se distribuyen los elementos con un espacio entre ellos, pero hay un problema. El espacio es muy grande y quedan 4 cajas en una primera fila y 3 cajas en la 
+    segunda fila, pero se quieren 2 filas de 4 cajas cada una, para esto se establece un flex-basis de menor tamaño */
+    justify-content: space-between;
+    /* Este es el cambio de tamaño del contenedor con ID projects (es importante mencionar que Víctor estabeció 80% pero al hacer esto las cajas no se cuadran como el indica, 
+    esto se debe a que el tamaño del monitor nos afecta al momento del maquetado, mi monitor es más grande, así que rebaje de 80% a 70% de flex-basis y así las cajas si se
+    arreglaron en dos filas de 4 cajas) */
+    flex-basis: 70%;
+}
+
+.project {
+    /* Siempre es importante agregar esta propiedad por el responsive, ahorra mucho trabajo en comparación con CSS puro, porque cada caja se va adaptando más claramente*/
+    flex-grow: 1;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    flex-basis: 250px;
+    margin-right: 20px;
+}
+
+.project img {
+    width: 100%;
+}
+
+/* Si se le coloca a esta regla CSS un order: 2 el aside y el contenido cambiarían de lugar, aunque no se ve tan bien, solo es una demostración de la facilidad de manipulación
+que brinda flexbox */
+#aside {
+    flex-basis: 15%;
+    margin-right: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#aside h2 {
+    /* Esta propiedad junto al width lo veo innecesairo pues el h2 ya es un elemento de bloque y así abarca el 100% del ancho disponible */
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 100;
+    color: #444;
+    padding-bottom: 10px;
+    margin-bottom: 20;
+    border-bottom: 1px solid rgba(225, 225, 226, 0.8);
+    text-align: center;
+}
+
+#aside ul {
+    list-style: none;
+}
+
+#aside ul li {
+    padding-bottom: 20px;
+
+}
+
+#aside a {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    display: block;
+    background-color: #eee;
+    color: #444;
+    text-transform: uppercase;
+    transition: all 300ms;
+}
+
+#aside a:hover {
+    background-color: #444;
+    color: #eee;
+}
+
+#footer {
+    border-top: 1px solid rgba(225, 225, 226, 0.8);
+    display: flex;
+    flex-flow: row wrap;
+    /* Víctor usa esta propiedad, sin embargo no veo que haga efecto, los dos elementos no se justifican a la izquierda como deberían
+    y se debe a que hay un selector antes que aplica al logo un tamaño de 65% que evita que se justifiquen ambos a la izquierda y a su vez está el flex-grow que hace que ambos 
+    elementos se separen aún más...es decir que esta propiedad está de sobra */
+    justify-content: flex-start;
+    height: 120px;
+    align-items: center;
+}
+
+#footer .logo {
+    opacity: 0.5;
+    /* Esta propiedad aparece como que se aplica pero pasa lo mismo que antes, no veo que haga nada, lo veo innecesario, el valor auto es el valor inicial del elemento */
+    flex-basis: auto;
+    flex-grow: 1;
+    order: 2;
+    text-align: right;
+    margin-right: 20px;
+}
+
+#footer .info {
+    flex-grow: 1;
+    order: 1;
+    margin-left: 20px;
+    color: #444;
+}
+
+/* De aquí en adelante es el responsive */
+
+@media (max-width:1334px) {
+
+    #header {
+        /* Con esta propiedad se centró el logo que dice portafolio */
+        text-align: center;
+    }
+
+    /* Con estos estilos se evitó que el menú se fuera tan abajo */
+    #menu>ul {
+        margin-top: 20px;
+        /* Con flex-start se colocó el menú más arriba, antes estaba centrado verticalmente */
+        align-items: flex-start;
+        /* Y con esto se mantuvo un espacio entre los elementos ul del menú, pero más compacto */
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width:646px) {
+
+    #content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #aside {
+        margin-right: 0px;
+    }
+
+    #aside ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    #aside ul li {
+        flex-grow: 1;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    /* Víctor no oclocó esto pero tuve que ponerlo porque en algún únto puse un margen (que no s esi el colocó) que impedía que se areglarán los elementos del aside igual que
+    a él */
+    #aside a {
+        margin: 0px;
+    }
+
+    .project {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+
+    #footer .logo {
+        flex-grow: 1;
+        order: 1;
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0px;
+    }
+
+    #footer .info {
+        flex-grow: 1;
+        order: 2;
+        color: #444;
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0px;
+    }
+}
