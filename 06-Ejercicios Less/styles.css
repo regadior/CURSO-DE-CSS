@@ -1,0 +1,66 @@
+/* Las variables también pueden contener texto que se utiliza como un selector o parte de un selector, en SASS se hace lo mismo con la interpolación, en este caso se definirá la variable b con el valor body 
+para usarla como selector */
+/* En esta regla se seleccionó el body pues ese selector está dentro de la variable @b */
+body {
+  background-color: lightblue;
+}
+h1 {
+  font-family: Arial;
+}
+/* Para compilar se usa el comando lessc estilos.less stilo.css (primero el archivo less y luego el nombre con que se debe compilar a CSS) */
+/* las anidaciones en LESS son iguales que en SASS */
+.informacion ul a {
+  color: green;
+  font-size: 18px;
+}
+/* Los mixins en LESS se escriben con un punto en lugar de un arroba como se hace en SASS, como ejemplo se creará un mixin llamado sombra y se aplicará a la caja informacion */
+/* Este es el mixin */
+.informacion {
+  /* Aquí ya se aplicó el mixin sombra al elemento con clase información */
+  box-shadow: 0px 0px 10px black;
+  text-shadow: 0px 0px 5px gray;
+}
+/* También se pueden pasar parámetros a los mixins de less, para esto se utiliza el arroba seguido del nombre del parámetro como se verá en el siguiente ejemplo*/
+.informacion2 {
+  /* Aquí se reemplazaron algunos valore spor los parámetros */
+  box-shadow: 0px 0px 10px red;
+  text-shadow: 0px 0px 10px red;
+}
+/* Al igual que en SASS, en LESS los valores pueden ser el resultado de alguna operación matemática entre valores */
+h1 {
+  font-size: 37px;
+}
+/* Estos mixins se ejecutan cuando se cumple una condición, igualmente se aplican a algún elemento. Para crearlos se copia un punto y el nombre del mixin, el primer parentesis 
+es un parámetro que se puede cmabiar al aplicarse a un elemento si se quiere, como los mixins de SASS, luego se coloca la palabra when y la condición entre paréntesis*/
+h1 {
+  color: blue;
+  /* Aquí se aplicó el mixin colocando su nombre, pero como se ve dentro del paréntesis podemos determinar si el valor es true o false (en este caso pues e sun ejemplo y la
+    condición podría ser distinta) */
+  color: black;
+}
+/* Los bucles son igualmente los bucles que son estructuras de control que se repiten una y otra vez, como el for de SASS. Se copia el nombre del mixin, un paréntesis en donde
+irá el parámetro, otro paréntesis con la condición para el contador y las llaves con el código a ejecutar */
+/* Aquí se menciona que */
+.informacion {
+  /* Aquí se agrega el mixin con bucle para que descienda hasta cero,  */
+  /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona], el paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá 
+    disminuyendo el tamnaño de la caja */
+  /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona], el paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá 
+    disminuyendo el tamnaño de la caja */
+  /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona], el paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá 
+    disminuyendo el tamnaño de la caja */
+  /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona], el paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá 
+    disminuyendo el tamnaño de la caja */
+  /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona], el paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá 
+    disminuyendo el tamnaño de la caja */
+  height: 900px;
+  height: 450px;
+  height: 300px;
+  height: 225px;
+  height: 180px;
+}

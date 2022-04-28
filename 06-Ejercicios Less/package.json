@@ -1,0 +1,11 @@
+{
+  "name": "aprendiendo-less",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "less": "lessc estilos.less styles.css"
+  },
+  "author": "",
+  "license": "ISC"
+}

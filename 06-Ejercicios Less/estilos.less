@@ -1,0 +1,111 @@
+//VARIABLES
+
+//Las variables son iguales en todos los lenguajes de programación, lo que cambia es su sintaxis, en LESS las variables se definen con @
+
+@bgcolor: lightblue;
+
+/* Las variables también pueden contener texto que se utiliza como un selector o parte de un selector, en SASS se hace lo mismo con la interpolación, en este caso se definirá la variable b con el valor body 
+para usarla como selector */
+
+@b: body;
+
+@fuente: Arial;
+
+//Para usar la variable como selector se copia el arroba, llaves y el nombre de la variable dentro de las llaves
+
+/* En esta regla se seleccionó el body pues ese selector está dentro de la variable @b */
+@{b} {
+    //Aquí se copió la variable bgcolor como valor de la propiedad background color
+    background-color: @bgcolor;
+}
+
+h1 {
+    //Aquí se volvió a utilizar una variable como valor de la propiedad font-family, y la variable fuente tiene como valor la fuente Arial
+    font-family: @fuente;
+}
+
+/* Para compilar se usa el comando lessc estilos.less stilo.css (primero el archivo less y luego el nombre con que se debe compilar a CSS) */
+
+//ANIDACIONES
+
+/* las anidaciones en LESS son iguales que en SASS */
+
+.informacion {
+    ul {
+        a {
+            color: green;
+            font-size: 18px;
+        }
+    }
+}
+
+//MIXINS
+
+/* Los mixins en LESS se escriben con un punto en lugar de un arroba como se hace en SASS, como ejemplo se creará un mixin llamado sombra y se aplicará a la caja informacion */
+
+/* Este es el mixin */
+.sombra() {
+    box-shadow: 0px 0px 10px black;
+    text-shadow: 0px 0px 5px gray;
+}
+
+.informacion {
+    /* Aquí ya se aplicó el mixin sombra al elemento con clase información */
+    .sombra();
+}
+
+/* También se pueden pasar parámetros a los mixins de less, para esto se utiliza el arroba seguido del nombre del parámetro como se verá en el siguiente ejemplo*/
+.sombra2 (@color, @size) {
+    /* Aquí se reemplazaron algunos valore spor los parámetros */
+    box-shadow: 0px 0px @size @color;
+    text-shadow: 0px 0px @size @color;
+}
+
+.informacion2 {
+    .sombra2(red, 10px);
+}
+
+//OPERADORES
+
+/* Al igual que en SASS, en LESS los valores pueden ser el resultado de alguna operación matemática entre valores */
+h1 {
+    font-size: 30px + 7px;
+}
+
+//MIXINS CONDICIONALES
+
+/* Estos mixins se ejecutan cuando se cumple una condición, igualmente se aplican a algún elemento. Para crearlos se copia un punto y el nombre del mixin, el primer parentesis 
+es un parámetro que se puede cmabiar al aplicarse a un elemento si se quiere, como los mixins de SASS, luego se coloca la palabra when y la condición entre paréntesis*/
+
+.textoNegro (@value) when (@value =true) {
+    color: black;
+}
+
+h1 {
+    color: blue;
+    /* Aquí se aplicó el mixin colocando su nombre, pero como se ve dentro del paréntesis podemos determinar si el valor es true o false (en este caso pues e sun ejemplo y la
+    condición podría ser distinta) */
+    .textoNegro(true);
+}
+
+//BUCLES
+
+/* Los bucles son igualmente los bucles que son estructuras de control que se repiten una y otra vez, como el for de SASS. Se copia el nombre del mixin, un paréntesis en donde
+irá el parámetro, otro paréntesis con la condición para el contador y las llaves con el código a ejecutar */
+
+/* Aquí se menciona que */
+.loop (@cont) when (@cont > 0) {
+    /* Dentro de las llaves estará el contador que irá descendiendo, como se indica dentro del paréntesis, la variable menos 1 [Víctor coloca doble paréntesis pero no se por qué
+    pues con un paréntesis funciona] */
+    .loop ((@cont - 1));
+    /* El paréntesis se usa para que la operación se lleve a cabo, si no no se hace, en este caso se dividirá 900px entre contrado e irá disminuyendo el tamnaño de la caja,
+    esto solo se verá en la consola pues se aplica el resultado final de esa operación */
+    height: (900px / @cont);
+}
+
+.informacion {
+    /* Esto también lo veo innecesario pues es una propiedad que no se aplica, lo que se aplica es el mixin con blucle */
+    height: 900px;
+    /* Aquí se agrega el mixin con bucle para que descienda hasta cero, dentro del paréntesis se indica el número de veces que se llevará a cabo el bucle (5 veces) */
+    .loop(5)
+}
